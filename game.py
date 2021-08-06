@@ -1,5 +1,4 @@
 import pygame
-import random
 import time
 import os
 from enemies.enemy_group import EnemyGroup
@@ -41,23 +40,29 @@ class Game:
 
     def update(self):
         game_quit = False
-        # event loop
-        mouse_x, mouse_y = pygame.mouse.get_pos()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                game_quit = True
-                return game_quit
-            # player press action
-            if time.time() - self.timer >= random.randrange(1,6)/3 and self.enemies.is_empty():
+        update = True
+        clock = pygame.time.Clock()
+        while update:
+            clock.tick(500)
+            # 第一波敵人在開啟遊戲後3秒出來，之後的敵人只要場上是空的就會生成
+            if time.time() - self.timer >= 3 and self.enemies.is_empty():
+                self.enemies.add(5)
                 self.timer = time.time()
-                self.enemies.add(10)  # generate  10 enemy for the next wave
-            # player click action
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                self.towers.got_click(mouse_x, mouse_y)
 
-        # update tower action
-        self.towers.update(self.enemies)
-        # update enemy action
-        self.enemies.update()
-        return game_quit
+            # event loop
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    game_quit = True
+                    return game_quit
+
+                # player click action
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    self.towers.got_click(mouse_x, mouse_y)
+
+            # update tower action
+            self.towers.update(self.enemies)
+            # update enemy action
+            self.enemies.update()
+            return game_quit
 

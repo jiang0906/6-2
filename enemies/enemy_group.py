@@ -1,5 +1,4 @@
 import pygame
-import random
 import math
 import os
 from FinalProject.settings import PATH_1, PATH_2, PATH_3, BASE
@@ -13,7 +12,6 @@ BLACK_ENEMY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("image
 
 class GreenEnemy:
     def __init__(self):
-        self.name = "green"
         self.max_health = 5
         self.health = self.max_health
         self.path = PATH_2
@@ -23,9 +21,6 @@ class GreenEnemy:
         self.image = GREEN_ENEMY_IMAGE
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
-        self.campaign_count = 0
-        self.campaign_max_count = 60
-        self.__reserved_member = []
         self.__expedition = []
 
 
@@ -66,8 +61,7 @@ class GreenEnemy:
 
 class RedEnemy:
     def __init__(self):
-        self.name = "red"
-        self.max_health = 7
+        self.max_health = 8
         self.health = self.max_health
         self.path = PATH_1
         self.path_index = 0
@@ -76,9 +70,6 @@ class RedEnemy:
         self.image = RED_ENEMY_IMAGE
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
-        self.campaign_count = 0
-        self.campaign_max_count = 60
-        self.__reserved_member = []
         self.__expedition = []
 
 
@@ -119,8 +110,7 @@ class RedEnemy:
 
 class PurpleEnemy:
     def __init__(self):
-        self.name = "purple"
-        self.max_health = 9
+        self.max_health = 10
         self.health = self.max_health
         self.path = PATH_3
         self.path_index = 0
@@ -129,9 +119,6 @@ class PurpleEnemy:
         self.image = PURPLE_ENEMY_IMAGE
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
-        self.campaign_count = 0
-        self.campaign_max_count = 60
-        self.__reserved_member = []
         self.__expedition = []
 
 
@@ -172,8 +159,7 @@ class PurpleEnemy:
 
 class BlackEnemy:
     def __init__(self):
-        self.name = "black"
-        self.max_health = 11
+        self.max_health = 15
         self.health = self.max_health
         self.path = PATH_3
         self.path_index = 0
@@ -182,9 +168,6 @@ class BlackEnemy:
         self.image = BLACK_ENEMY_IMAGE
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
-        self.campaign_count = 0
-        self.campaign_max_count = 60
-        self.__reserved_member = []
         self.__expedition = []
 
 
@@ -267,6 +250,7 @@ class EnemyGroup:
         """
         Generate the enemies for next wave
         """
+        # 生成順序為 綠->紫->紅->黑
         if self.wave % 4 == 0:
             self.__reserved_member = [GreenEnemy() for _ in range(num)]
         elif self.wave % 4 == 1:
