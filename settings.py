@@ -60,6 +60,5 @@ while line:
     line = fileObject.readline()
 # 關閉txt檔
 fileObject.close()
-
 # base
 BASE = pygame.Rect(415, 535, 50, 50)
