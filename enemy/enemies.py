@@ -60,8 +60,9 @@ class GreenEnemy:
             bar_height = 5
             pygame.draw.rect(win, RED, [en.rect.x, en.rect.y - 10, max_bar_width, bar_height])
             pygame.draw.rect(win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
+
     def stride_revise(self):
-        self.stride=0.8
+        self.stride = 0.6
 
 
 class RedEnemy:

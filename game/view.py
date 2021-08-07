@@ -48,12 +48,12 @@ class GameView:
 
     def draw_money(self, money: int):
         """ (Q2.1)render the money"""
-        text = self.font.render(f"Money: {money}", True, (255, 255, 255))
+        text = self.font.render(f"Money: {money}", True, BLACK)
         self.win.blit(text, (900, 30))
 
     def draw_wave(self, wave: int):
         """(Q2.2)render the wave"""
-        text = self.font.render(f"Wave: {wave}", True, (255, 255, 255))
+        text = self.font.render(f"Wave: {wave}", True, BLACK)
         self.win.blit(text, (900, 15))
 
     '''def draw_hp(self, lives):

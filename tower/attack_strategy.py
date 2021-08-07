@@ -20,7 +20,7 @@ class SingleAttack(AttackStrategy):
     def attack(self, enemies, tower, cd_count):
         for en in enemies:
             if in_range(en, tower):
-                en.health -= tower.get_damage()
+                en.health -= tower.damage
                 cd_count = 0
                 return cd_count#跑完第一隻就結束,代表只攻擊一次
         return cd_count
@@ -44,7 +44,7 @@ class Slowly(AttackStrategy):
                 cd_count = 0
         for en in enemies:
             if in_range(en, tower):
-                en.health -= tower.get_damag
+                en.health -= tower.damage
                 cd_count = 0
                 return cd_count
         #整個迴圈都跑完,代表整波敵人都會受到攻擊

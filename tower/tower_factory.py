@@ -62,7 +62,7 @@ class Tower:
 
     @classmethod
     def Foreheadgun(cls, x, y):  # 額溫槍,全體攻擊+緩速
-        foreheadgun = cls(x, y, SingleAttack(), FOREHEAD_GUN_IMAGE)
+        foreheadgun = cls(x, y, Slowly(), FOREHEAD_GUN_IMAGE)
         foreheadgun._range = [130, 140, 150, 160, 170, 180]
         foreheadgun._damage = [1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
         foreheadgun.value = [300, 330, 390 ,450 , 500,560]

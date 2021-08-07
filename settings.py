@@ -6,7 +6,7 @@ WIN_WIDTH = 1024
 WIN_HEIGHT = 600
 
 # image
-BACKGROUND_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "NCKU_MAP.png")), (WIN_WIDTH, WIN_HEIGHT))
+BACKGROUND_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "NCKU.png")), (WIN_WIDTH, WIN_HEIGHT))
 
 # frame rate
 FPS = 60
