@@ -51,7 +51,7 @@ class GameControl:
         """(Q2) Controller request View to render something"""
         if self.model.menu is not None:
             self.view.draw_menu(self.model.menu)
-        #顯示錢錢跟敵人來了幾波
+        # 顯示錢錢跟敵人來了幾波
         self.view.draw_money(self.model.money)
         self.view.draw_wave(self.model.wave)
 

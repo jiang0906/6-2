@@ -5,7 +5,7 @@ def in_range(enemy, tower):
     x1, y1 = enemy.rect.center
     x2, y2 = tower.rect.center
     distance = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
-    if distance <= tower.get_range():
+    if distance <= tower.range:
         return True
     return False
 
@@ -18,7 +18,7 @@ class AttackStrategy(ABC):
 class SingleAttack(AttackStrategy):
     """attack an enemy once a time"""
     def attack(self, enemies, tower, cd_count):
-        for en in enemies.get():
+        for en in enemies:
             if in_range(en, tower):
                 en.health -= tower.get_damage()
                 cd_count = 0
@@ -28,9 +28,9 @@ class SingleAttack(AttackStrategy):
 class AOE(AttackStrategy):
     """attack all the enemy in range once a time"""
     def attack(self, enemies, tower, cd_count):
-        for en in enemies.get():
+        for en in enemies:
             if in_range(en, tower):
-                en.health -= tower.get_damage()
+                en.health -= tower.damage
                 cd_count = 0
         #整個迴圈都跑完,代表整波敵人都會受到攻擊
         return cd_count
@@ -38,13 +38,13 @@ class AOE(AttackStrategy):
 class Slowly(AttackStrategy):
     """attack all the enemy in range once a time"""
     def attack(self, enemies, tower, cd_count):
-        for en in enemies.get():
+        for en in enemies:
             if in_range(en, tower):
                 en.stride_revise()
                 cd_count = 0
-        for en in enemies.get():
+        for en in enemies:
             if in_range(en, tower):
-                en.health -= tower.get_damage()
+                en.health -= tower.get_damag
                 cd_count = 0
                 return cd_count
         #整個迴圈都跑完,代表整波敵人都會受到攻擊

@@ -1,7 +1,7 @@
 import pygame
 import os
 from tower.tower_factory import Tower, Vacancy
-from enemies.enemy import EnemyGroup
+from enemy.enemies import EnemyGroup
 from menu.menus import UpgradeMenu, BuildMenu, MainMenu
 from game.user_request import RequestSubject, TowerFactory, TowerSeller, TowerDeveloper, EnemyGenerator, Muse, Music
 from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE
@@ -32,7 +32,6 @@ class GameModel:
         self.generator = EnemyGenerator(self.subject)
         self.muse = Muse(self.subject)
         self.music = Music(self.subject)
-        #
         self.wave = 0
         self.money = 500
         self.max_hp = 10
@@ -124,14 +123,3 @@ class GameModel:
     @property
     def plots(self):
         return self.__plots
-
-
-
-
-
-
-
-
-
-
-

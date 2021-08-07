@@ -1,4 +1,5 @@
 import pygame
+import time
 from tower.tower_factory import Tower, Vacancy
 
 """This module is import in model.py"""
@@ -70,14 +71,15 @@ class TowerDeveloper:
 class TowerFactory:
     def __init__(self, subject):
         subject.register(self)
-        self.tower_name = ["mask", "injection", "alcohol", "forehead_gun"]
+        self.tower_name = ["mask", "injection", "alcohol", "foreheadgun"]
 
     def update(self, user_request: str, model):
         """add new tower"""
         for name in self.tower_name:
             if user_request == name:
                 x, y = model.selected_plot.rect.center
-                tower_dict = {"mask": Tower.Mask(x, y), "injection": Tower.Injection(x, y), "alcohol": Tower.Alcohol(x, y), "forehead_gun": Tower.Foreheadgun(x, y)}
+                tower_dict = {"mask": Tower.Mask(x, y), "injection": Tower.Injection(x, y),
+                              "alcohol": Tower.Alcohol(x, y), "foreheadgun": Tower.Foreheadgun(x, y)}
                 new_tower = tower_dict[user_request]
                 if model.money > new_tower.get_cost():
                     model.money -= new_tower.get_cost()
