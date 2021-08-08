@@ -7,6 +7,11 @@ WIN_HEIGHT = 600
 
 # image
 BACKGROUND_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "NCKU.png")), (WIN_WIDTH, WIN_HEIGHT))
+Thumbnail_WIDTH = 204
+Thumbnail_HEIGHT = 136
+Thumbnail = []
+for i in range(12):
+    Thumbnail.append(pygame.transform.scale(pygame.image.load(f"images/background_{i}.jpg"), (Thumbnail_WIDTH, Thumbnail_HEIGHT)))
 
 # frame rate
 FPS = 60
