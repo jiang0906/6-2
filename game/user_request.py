@@ -77,7 +77,7 @@ class TowerFactory:
                 tower_dict = {"mask": Tower.Mask(x, y), "injection": Tower.Injection(x, y),
                               "alcohol": Tower.Alcohol(x, y), "foreheadgun": Tower.Foreheadgun(x, y)}
                 new_tower = tower_dict[user_request]
-                if model.money > new_tower.get_cost():
+                if model.money >= new_tower.get_cost():
                     model.money -= new_tower.get_cost()
                     model.towers.append(new_tower)
                     model.plots.remove(model.selected_plot)
