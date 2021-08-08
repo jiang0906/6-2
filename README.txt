@@ -6,3 +6,4 @@ model GameModel init 新增 self.timer 40
 0808 10.22 有更改一些東西 懶得打了
 
 0809 00.10 (隨意)更改初始畫面 新增結束畫面
+0809 01.10 更改model.py
