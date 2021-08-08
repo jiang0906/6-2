@@ -113,20 +113,19 @@ class GameModel:
         self.__enemies.advance(self)
 
     def condition_update(self):
-        if self.check_game_over() is True:
-            return
-        else:
-            self.date += 1
-            if self.date % self.max_date == 0:
-                self.date = 0
-                self.month += 1
-                if self.support+self.notsupport <= 100:
-                    self.support += 3
-                if self.month == 13:
-                    self.month = 1
-                    self.year += 1
-            if self.support + self.notsupport > 100:
-                self.support = 100 - self.notsupport
+        self.date += 1
+        if self.date % self.max_date == 0:
+            self.date = 0
+            self.month += 1
+            if self.support+self.notsupport <= 100:
+                self.support += 3
+            if self.month == 13:
+                self.month = 1
+                self.year += 1
+        if self.notsupport > 100:
+            self.notsupport = 100
+        if self.support + self.notsupport > 100:
+            self.support = 100 - self.notsupport
 
     def check_game_over(self):
         if self.year == 2023 and self.month == 1:
