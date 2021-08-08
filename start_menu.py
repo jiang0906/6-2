@@ -35,7 +35,7 @@ class StartMenu:
     def menu_run(self):
         run = True
         clock = pygame.time.Clock()
-        pygame.display.set_caption("Covid-19 Defense Game")
+        pygame.display.set_caption("成大安全 學校有錢")
         #self.play_music()
         while run:
             clock.tick(FPS)
