@@ -61,7 +61,7 @@ class GreenEnemy:
             pygame.draw.rect(win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
 
     def stride_revise(self):
-        self.stride=0.95
+        self.stride = 0.9
 
     def stride_revise_getback(self):
         self.stride = 1
@@ -74,7 +74,7 @@ class RedEnemy:
         self.path = PATH_1
         self.path_index = 0
         self.move_count = 0
-        self.stride = 1
+        self.stride = 0.8
         self.image = RED_ENEMY_IMAGE
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
@@ -117,10 +117,10 @@ class RedEnemy:
             pygame.draw.rect(win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
 
     def stride_revise(self):
-        self.stride=0.9
+        self.stride = 0.75
 
     def stride_revise_getback(self):
-        self.stride = 1
+        self.stride = 0.8
 
 class PurpleEnemy:
     def __init__(self):
@@ -129,7 +129,7 @@ class PurpleEnemy:
         self.path = PATH_3
         self.path_index = 0
         self.move_count = 0
-        self.stride = 1
+        self.stride = 1.2
         self.image = PURPLE_ENEMY_IMAGE
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
@@ -172,10 +172,10 @@ class PurpleEnemy:
             pygame.draw.rect(win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
 
     def stride_revise(self):
-        self.stride=0.85
+        self.stride = 1.1
 
     def stride_revise_getback(self):
-        self.stride = 1
+        self.stride = 1.2
 
 class BlackEnemy:
     def __init__(self):
@@ -184,7 +184,7 @@ class BlackEnemy:
         self.path = PATH_3
         self.path_index = 0
         self.move_count = 0
-        self.stride = 1
+        self.stride = 1.1
         self.image = BLACK_ENEMY_IMAGE
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
@@ -214,12 +214,6 @@ class BlackEnemy:
             self.path_index += 1
             self.rect.center = self.path[self.path_index]
 
-    def stride_revise(self):
-        self.stride=0.8
-
-    def stride_revise_getback(self):
-        self.stride = 1
-
     def draw(self, win):
         for en in self.__expedition:
             win.blit(en.image, en.rect)
@@ -230,6 +224,12 @@ class BlackEnemy:
             bar_height = 5
             pygame.draw.rect(win, RED, [en.rect.x, en.rect.y - 10, max_bar_width, bar_height])
             pygame.draw.rect(win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
+
+    def stride_revise(self):
+        self.stride = 1
+
+    def stride_revise_getback(self):
+        self.stride = 1.1
 
 class EnemyGroup:
     def __init__(self):
