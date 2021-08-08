@@ -56,6 +56,8 @@ class GameControl:
         # 顯示錢錢跟敵人來了幾波
         self.view.draw_money(self.model.money)
         self.view.draw_wave(self.model.wave)
+        self.view.draw_popularity(self.model.support, self.model.notsupport)
+        self.view.draw_year_month(self.model.year, self.model.month)
 
     @property
     def quit_game(self):

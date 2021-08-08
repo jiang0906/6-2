@@ -1,7 +1,7 @@
 import pygame
-from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE,  Thumbnail, Thumbnail_WIDTH, Thumbnail_HEIGHT,  VACANCY
+from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE, POPULARITY_IMAGE, CALENDER_IMAGE
+from settings import Thumbnail, Thumbnail_WIDTH, Thumbnail_HEIGHT, VACANCY
 from color_settings import *
-
 
 
 class GameView:
@@ -47,14 +47,28 @@ class GameView:
             self.win.blit(pt.image, pt.rect)
 
     def draw_money(self, money: int):
-        """ (Q2.1)render the money"""
+        self.font = pygame.font.SysFont("comicsans", 30)
         text = self.font.render(f"Money: {money}", True, BLACK)
         self.win.blit(text, (900, 30))
 
     def draw_wave(self, wave: int):
-        """(Q2.2)render the wave"""
+        self.font = pygame.font.SysFont("comicsans", 30)
         text = self.font.render(f"Wave: {wave}", True, BLACK)
         self.win.blit(text, (900, 15))
+
+    def draw_popularity(self, support: int, notsupport: int):
+        self.win.blit(POPULARITY_IMAGE, (800, 150))
+        self.font = pygame.font.SysFont("comicsans", 50)
+        text = self.font.render(f"{support}%", True, GREEN)
+        self.win.blit(text, (830, 220))
+        text = self.font.render(f"{notsupport}%", True, RED)
+        self.win.blit(text, (930, 220))
+
+    def draw_year_month(self, year: int, month: int):
+        self.win.blit(CALENDER_IMAGE, (900, 290))
+        self.font = pygame.font.SysFont("comicsans", 30)
+        text = self.font.render(f"{year} / {month}", True, BLACK)
+        self.win.blit(text, (930, 298))
 
     def draw_thumbnail(self, menu):
         # create semi-transparent surface

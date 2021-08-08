@@ -34,6 +34,10 @@ class GameModel:
         self.music = Music(self.subject)
         self.wave = 0
         self.money = 500
+        self.support = 50
+        self.notsupport = 10
+        self.year = 2021
+        self.month = 8
         self.max_hp = 10
         self.hp = self.max_hp
         #self.sound = pygame.mixer.Sound(os.path.join("sound", "sound.flac"))
