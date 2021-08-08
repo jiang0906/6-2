@@ -42,6 +42,7 @@ class GameModel:
         self.max_date = 60
         self.max_hp = 10
         self.hp = self.max_hp
+        self.timer = time.time()
         #self.sound = pygame.mixer.Sound(os.path.join("sound", "sound.flac"))
 
     def user_request(self, user_request: str):
@@ -52,9 +53,9 @@ class GameModel:
         """get keyboard response or button response"""
         # initial
         self.selected_button = None
-        # key event
+        '''# key event
         if events["keyboard key"] is not None:
-            return "start new wave"
+            return "start new wave"'''
         # mouse event
         if events["mouse position"] is not None:
             x, y = events["mouse position"]
