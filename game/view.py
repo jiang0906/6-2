@@ -1,5 +1,5 @@
 import pygame
-from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE
+from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE,  Thumbnail, Thumbnail_WIDTH, Thumbnail_HEIGHT,  VACANCY
 from color_settings import *
 
 
@@ -56,12 +56,26 @@ class GameView:
         text = self.font.render(f"Wave: {wave}", True, BLACK)
         self.win.blit(text, (900, 15))
 
-    '''def draw_hp(self, lives):
+    def draw_thumbnail(self, menu):
+        # create semi-transparent surface
+        transparent_surface = pygame.Surface((Thumbnail_WIDTH + 20, Thumbnail_HEIGHT + 20), pygame.SRCALPHA)
+        transparency = 50  # define transparency: 0~255, 0 is fully transparent
+        # draw the rectangle on the transparent surface
+        pygame.draw.rect(transparent_surface, (100, 100, 100, transparency),
+                         [0, 0, Thumbnail_WIDTH + 20, Thumbnail_HEIGHT + 20])
+        self.win.blit(transparent_surface, (470, 420))
+        for i in range(12):
+            if menu.rect.center == VACANCY[i]:
+                self.win.blit(Thumbnail[i], (480, 430))
+    '''
+
+    def draw_hp(self, lives):
         # draw_lives
         hp_rect = HP_IMAGE.get_rect()
         for i in range(10):
             self.win.blit(HP_GRAY_IMAGE, (WIN_WIDTH // 2 - hp_rect.w * (2.5 - i % 5), hp_rect.h * (i // 5)))
         for i in range(lives):
-            self.win.blit(HP_IMAGE, (WIN_WIDTH // 2 - hp_rect.w * (2.5 - i % 5), hp_rect.h * (i // 5)))'''
+            self.win.blit(HP_IMAGE, (WIN_WIDTH // 2 - hp_rect.w * (2.5 - i % 5), hp_rect.h * (i // 5)))
+    '''
 
 

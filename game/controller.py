@@ -46,10 +46,12 @@ class GameControl:
         '''self.view.draw_hp(self.model.hp)'''
         self.view.draw_enemies(self.model.enemies)
         self.view.draw_towers(self.model.towers)
+        # self.view.draw_Thumbnail(self.model.selected_tower)
         self.view.draw_range(self.model.selected_tower)
         self.view.draw_plots(self.model.plots)
         """(Q2) Controller request View to render something"""
         if self.model.menu is not None:
+            self.view.draw_thumbnail(self.model.menu)
             self.view.draw_menu(self.model.menu)
         # 顯示錢錢跟敵人來了幾波
         self.view.draw_money(self.model.money)

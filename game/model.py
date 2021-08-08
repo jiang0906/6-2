@@ -1,7 +1,7 @@
 import pygame
 import os
 from tower.tower_factory import Tower, Vacancy
-from enemy.enemies import EnemyGroup
+from enemy.enemy import EnemyGroup
 from menu.menus import UpgradeMenu, BuildMenu, MainMenu
 from game.user_request import RequestSubject, TowerFactory, TowerSeller, TowerDeveloper, EnemyGenerator, Muse, Music
 from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE
