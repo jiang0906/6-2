@@ -8,6 +8,9 @@ class GameView:
     def __init__(self):
         self.win = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         self.font = pygame.font.SysFont("comicsans", 30)
+        self.date = 0
+        self.month = 0
+        self.year = 0
 
     def draw_bg(self):
         self.win.blit(BACKGROUND_IMAGE, (0, 0))
@@ -64,11 +67,15 @@ class GameView:
         text = self.font.render(f"{notsupport}%", True, RED)
         self.win.blit(text, (930, 220))
 
-    def draw_year_month(self, year: int, month: int):
+    def draw_year_month(self, year: int, month: int, date: int, max_date: int):
         self.win.blit(CALENDER_IMAGE, (900, 290))
         self.font = pygame.font.SysFont("comicsans", 30)
         text = self.font.render(f"{year} / {month}", True, BLACK)
         self.win.blit(text, (930, 298))
+        # draw date bar
+        bar_height = 7
+        pygame.draw.rect(self.win, GRAY, [800, 310, max_date*1.5, bar_height])
+        pygame.draw.rect(self.win, BLACK, [800, 300, (max_date-date)*1.5, bar_height])
 
     def draw_thumbnail(self, menu):
         # create semi-transparent surface

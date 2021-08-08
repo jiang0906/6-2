@@ -38,6 +38,8 @@ class GameModel:
         self.notsupport = 10
         self.year = 2021
         self.month = 8
+        self.date = 0
+        self.max_date = 60
         self.max_hp = 10
         self.hp = self.max_hp
         #self.sound = pygame.mixer.Sound(os.path.join("sound", "sound.flac"))
@@ -107,6 +109,17 @@ class GameModel:
 
     def enemies_advance(self):
         self.__enemies.advance(self)
+
+    def condition_update(self):
+        self.date += 1
+        if self.date % self.max_date == 0:
+            self.date = 0
+            self.month += 1
+            if (self.support+self.notsupport) <= 97:
+                self.support += 3
+            if self.month == 13:
+                self.month = 1
+                self.year += 1
 
     @property
     def enemies(self):

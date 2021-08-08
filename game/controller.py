@@ -19,6 +19,7 @@ class GameControl:
         self.model.call_menu()
         self.model.towers_attack()
         self.model.enemies_advance()
+        self.model.condition_update()
 
     def receive_user_input(self):
         """receive user input from the events"""
@@ -57,7 +58,7 @@ class GameControl:
         self.view.draw_money(self.model.money)
         self.view.draw_wave(self.model.wave)
         self.view.draw_popularity(self.model.support, self.model.notsupport)
-        self.view.draw_year_month(self.model.year, self.model.month)
+        self.view.draw_year_month(self.model.year, self.model.month, self.model.date, self.model.max_date)
 
     @property
     def quit_game(self):
