@@ -7,3 +7,5 @@ model GameModel init 新增 self.timer 40
 
 0809 00.10 (隨意)更改初始畫面 新增結束畫面
 0809 01.10 更改model.py
+
+0809 01.38 更改enemy速度
