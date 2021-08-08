@@ -1,8 +1,9 @@
-0805
+0808 11.
 
-SETTING中:
-WIN_WIDTH = 1024
-WIN_HEIGHT = 576
+【新增】
+setting.py 10~11行
+view.py 2,59~69行
+controller 54行
 
-PATH_1[]、PATH_2[]、PATH_3[]有敵人的行進路線
-VACANCY[]有塔的座標
+【修改】
+model.py 4行
