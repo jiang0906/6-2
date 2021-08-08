@@ -1,4 +1,5 @@
 import pygame
+import time
 import os
 from tower.tower_factory import Tower, Vacancy
 from enemy.enemy import EnemyGroup
