@@ -1,6 +1,6 @@
 import pygame
 from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE, POPULARITY_IMAGE, CALENDER_IMAGE
-from settings import Thumbnail, Thumbnail_WIDTH, Thumbnail_HEIGHT, VACANCY
+from settings import Thumbnail, Thumbnail_WIDTH, Thumbnail_HEIGHT, VACANCY, PRESIDENT_IMAGE
 from color_settings import *
 
 
@@ -47,12 +47,12 @@ class GameView:
             self.win.blit(pt.image, pt.rect)
 
     def draw_money(self, money: int):
-        """ (Q2.1)render the money"""
+        self.font = pygame.font.SysFont("comicsans", 30)
         text = self.font.render(f"Money: {money}", True, BLACK)
         self.win.blit(text, (900, 30))
 
     def draw_wave(self, wave: int):
-        """(Q2.2)render the wave"""
+        self.font = pygame.font.SysFont("comicsans", 30)
         text = self.font.render(f"Wave: {wave}", True, BLACK)
         self.win.blit(text, (900, 15))
 
@@ -85,6 +85,17 @@ class GameView:
         for i in range(12):
             if menu.rect.center == VACANCY[i]:
                 self.win.blit(Thumbnail[i], (150, 440))
+
+    def draw_game_result(self, model):
+        pygame.draw.rect(self.win, BLACK, [100, 100, 640, 375])
+        pygame.draw.rect(self.win, WHITE, [115, 115, 610, 345])
+        self.win.blit(PRESIDENT_IMAGE, (120, 120))
+        self.font = pygame.font.SysFont("arial", 50)
+        text = self.font.render(f"NCKU president Su", True, BLACK)
+        self.win.blit(text, (210, 350))
+        text = self.font.render(f"Re-elected successfully !!", True, BLACK)
+        self.win.blit(text, (210, 400))
+
 
     '''def draw_hp(self, lives):
         # draw_lives

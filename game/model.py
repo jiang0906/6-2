@@ -1,6 +1,6 @@
 import pygame
-import time
 import os
+import time
 from tower.tower_factory import Tower, Vacancy
 from enemy.enemy import EnemyGroup
 from menu.menus import UpgradeMenu, BuildMenu, MainMenu
@@ -40,7 +40,7 @@ class GameModel:
         self.year = 2021
         self.month = 8
         self.date = 0
-        self.max_date = 60
+        self.max_date = 10
         self.max_hp = 10
         self.hp = self.max_hp
         self.timer = time.time()
@@ -113,17 +113,25 @@ class GameModel:
         self.__enemies.advance(self)
 
     def condition_update(self):
-        self.date += 1
-        if self.date % self.max_date == 0:
-            self.date = 0
-            self.month += 1
-            if self.support+self.notsupport <= 97:
-                self.support += 3
-            if self.month == 13:
-                self.month = 1
-                self.year += 1
-        if self.support + self.notsupport > 100:
-            self.support = 100 - self.notsupport
+        if self.check_game_over() is True:
+            return
+        else:
+            self.date += 1
+            if self.date % self.max_date == 0:
+                self.date = 0
+                self.month += 1
+                if self.support+self.notsupport <= 100:
+                    self.support += 3
+                if self.month == 13:
+                    self.month = 1
+                    self.year += 1
+            if self.support + self.notsupport > 100:
+                self.support = 100 - self.notsupport
+
+    def check_game_over(self):
+        if self.year == 2023 and self.month == 1:
+            return True
+        return False
 
     @property
     def enemies(self):

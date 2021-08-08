@@ -16,6 +16,8 @@ Thumbnail = []
 for i in range(12):
     Thumbnail.append(pygame.transform.scale(pygame.image.load(f"images/background_{i}.jpg"), (Thumbnail_WIDTH, Thumbnail_HEIGHT)))
 
+PRESIDENT_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "president.png")), (600, 340))
+
 # frame rate
 FPS = 60
 # color
