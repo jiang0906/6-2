@@ -15,7 +15,7 @@ class StartMenu:
         # win
         self.menu_win = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         # background
-        self.bg = pygame.transform.scale(pygame.image.load(os.path.join("images", "start_menu.png")), (WIN_WIDTH, WIN_HEIGHT))
+        self.bg = pygame.transform.scale(pygame.image.load(os.path.join("images", "start_ncku.png")), (WIN_WIDTH, WIN_HEIGHT))
         # button
         self.start_btn = Buttons(349, 315, 338, 101)  # x, y, width, height
         self.sound_btn = Buttons(725, 525, 90, 70)
