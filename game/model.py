@@ -1,4 +1,5 @@
 import pygame
+import time
 import os
 from tower.tower_factory import Tower, Vacancy
 from enemy.enemy import EnemyGroup
@@ -17,31 +18,26 @@ class GameModel:
         self.__main_menu = MainMenu()
 
         # 一開始的遊戲增加點位
-        self.__plots = [Vacancy(110, 448), Vacancy(331, 444),Vacancy(179, 160),Vacancy(291, 157),
-                        Vacancy(417, 163),Vacancy(338, 296),Vacancy(233, 295),Vacancy(142, 292),
-                        Vacancy(496, 294),Vacancy(584, 167),Vacancy(498, 444),Vacancy(582, 297)]
+        self.__plots = [Vacancy(110, 448), Vacancy(331, 444), Vacancy(179, 160), Vacancy(291, 157),
+                        Vacancy(417, 163), Vacancy(338, 296), Vacancy(233, 295), Vacancy(142, 292),
+                        Vacancy(496, 294), Vacancy(584, 167), Vacancy(498, 444), Vacancy(582, 297)]
         # selected item
         self.selected_plot = None
         self.selected_tower = None
         self.selected_button = None
         # apply observer pattern
         self.subject = RequestSubject(self)
+        self.generator = EnemyGenerator(self.subject)
         self.seller = TowerSeller(self.subject)
         self.developer = TowerDeveloper(self.subject)
         self.factory = TowerFactory(self.subject)
-        self.generator = EnemyGenerator(self.subject)
         self.muse = Muse(self.subject)
         self.music = Music(self.subject)
         self.wave = 0
         self.money = 500
-        self.support = 50
-        self.notsupport = 10
-        self.year = 2021
-        self.month = 8
-        self.date = 0
-        self.max_date = 60
         self.max_hp = 10
         self.hp = self.max_hp
+        self.timer = time.time()
         #self.sound = pygame.mixer.Sound(os.path.join("sound", "sound.flac"))
 
     def user_request(self, user_request: str):
@@ -52,9 +48,9 @@ class GameModel:
         """get keyboard response or button response"""
         # initial
         self.selected_button = None
-        # key event
+        '''# key event
         if events["keyboard key"] is not None:
-            return "start new wave"
+            return "start new wave"'''
         # mouse event
         if events["mouse position"] is not None:
             x, y = events["mouse position"]
@@ -109,17 +105,6 @@ class GameModel:
 
     def enemies_advance(self):
         self.__enemies.advance(self)
-
-    def condition_update(self):
-        self.date += 1
-        if self.date % self.max_date == 0:
-            self.date = 0
-            self.month += 1
-            if (self.support+self.notsupport) <= 97:
-                self.support += 3
-            if self.month == 13:
-                self.month = 1
-                self.year += 1
 
     @property
     def enemies(self):

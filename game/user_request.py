@@ -29,9 +29,11 @@ class EnemyGenerator:
 
     def update(self, user_request: str, model):
         """add new enemy"""
-        if user_request == "start new wave":
-            model.enemies.add(5)
+        # 第一波敵人會在開始遊戲後3秒出現，之後只要場上為空即會出現
+        if time.time() - model.timer >= 3 and model.enemies.is_empty():
+            model.enemies.add(10)
             model.wave += 1
+            model.timer = time.time()
 
 
 class TowerSeller:
@@ -59,7 +61,7 @@ class TowerDeveloper:
             # use model.selected_tower to access the selected tower data
             # use model.money to access to money data
 
-            #如果錢達到升級的要求,則塔可升級
+            # 如果錢達到升級的要求,則塔可升級
             if model.money>model.selected_tower.get_upgrade_cost():
                 model.money -= model.selected_tower.get_upgrade_cost()
                 model.selected_tower.level+=1

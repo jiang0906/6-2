@@ -1,10 +1,8 @@
-0808 8p.m
+0805
 
-【修改】
-setting.py
-view.py 
-controller
-model.py 4行
+SETTING中:
+WIN_WIDTH = 1024
+WIN_HEIGHT = 576
 
-【新增】
-images
+PATH_1[]、PATH_2[]、PATH_3[]有敵人的行進路線
+VACANCY[]有塔的座標

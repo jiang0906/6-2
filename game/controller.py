@@ -7,8 +7,7 @@ class GameControl:
         self.model = game_model
         self.view = game_view
         self.events = {"game quit": False,
-                       "mouse position": [0, 0],
-                       "keyboard key": 0
+                       "mouse position": [0, 0]
                        }
         self.request = None  # response of user input
 
@@ -19,23 +18,21 @@ class GameControl:
         self.model.call_menu()
         self.model.towers_attack()
         self.model.enemies_advance()
-        self.model.condition_update()
 
     def receive_user_input(self):
         """receive user input from the events"""
         # event initialization
         self.events = {"game quit": False,
-                       "mouse position": None,
-                       "keyboard key": None
+                       "mouse position": None
                        }
         # update event
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.events["game quit"] = True
-            # player press action
+            '''# player press action
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_n:
-                    self.events["keyboard key"] = pygame.K_n
+                    self.events["keyboard key"] = pygame.K_n'''
             # player click action
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
@@ -47,18 +44,14 @@ class GameControl:
         '''self.view.draw_hp(self.model.hp)'''
         self.view.draw_enemies(self.model.enemies)
         self.view.draw_towers(self.model.towers)
-        # self.view.draw_Thumbnail(self.model.selected_tower)
         self.view.draw_range(self.model.selected_tower)
         self.view.draw_plots(self.model.plots)
         """(Q2) Controller request View to render something"""
         if self.model.menu is not None:
-            self.view.draw_thumbnail(self.model.menu)
             self.view.draw_menu(self.model.menu)
         # 顯示錢錢跟敵人來了幾波
         self.view.draw_money(self.model.money)
         self.view.draw_wave(self.model.wave)
-        self.view.draw_popularity(self.model.support, self.model.notsupport)
-        self.view.draw_year_month(self.model.year, self.model.month, self.model.date, self.model.max_date)
 
     @property
     def quit_game(self):
