@@ -117,11 +117,11 @@ class GameModel:
             self.month += 1
             if self.support+self.notsupport <= 97:
                 self.support += 3
-            elif self.support + self.notsuppor > 100:
-                self.support = 100 - self.notsupport
             if self.month == 13:
                 self.month = 1
                 self.year += 1
+        if self.support + self.notsupport > 100:
+            self.support = 100 - self.notsupport
 
     @property
     def enemies(self):
