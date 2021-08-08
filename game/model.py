@@ -40,7 +40,7 @@ class GameModel:
         self.year = 2021
         self.month = 8
         self.date = 0
-        self.max_date = 10
+        self.max_date = 210
         self.max_hp = 10
         self.hp = self.max_hp
         self.timer = time.time()

@@ -71,8 +71,9 @@ class GameView:
         self.win.blit(text, (930, 298))
         # draw date bar
         bar_height = 7
-        pygame.draw.rect(self.win, GRAY, [800, 310, max_date*1.5, bar_height])
-        pygame.draw.rect(self.win, BLACK, [800, 300, (max_date-date)*1.5, bar_height])
+        bar_length = 100 * (max_date-date)/max_date
+        pygame.draw.rect(self.win, GRAY, [800, 310, 100, bar_height])
+        pygame.draw.rect(self.win, BLACK, [800, 300, bar_length, bar_height])
 
     def draw_thumbnail(self, menu):
         # create semi-transparent surface
