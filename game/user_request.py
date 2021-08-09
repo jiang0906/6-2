@@ -29,8 +29,8 @@ class EnemyGenerator:
 
     def update(self, user_request: str, model):
         """add new enemy"""
-        # 第一波敵人會在開始遊戲後3秒出現，之後只要場上為空即會出現
-        if time.time() - model.timer >= 3 and model.enemies.is_empty():
+        # 敵人會在開始遊戲後3秒出現，按照順序 不照數量
+        if time.time() - model.timer >= 3:
             model.enemies.add(10)
             model.wave += 1
             model.timer = time.time()
