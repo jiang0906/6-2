@@ -11,3 +11,5 @@ model GameModel init 新增 self.timer 40
 0809 01.38 更改enemy速度
 
 0809 14.40 更改user_request EnemyGenerator 隨機出enemy
+
+0809 16.45 更改enemy:殺掉不同enemy，得到不同的錢
