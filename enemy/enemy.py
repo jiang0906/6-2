@@ -318,10 +318,17 @@ class EnemyGroup:
         self.campaign()
         for en in self.__expedition:
             en.move()
-            # delete the object and get 30 money when it is killed
+            # delete the object and get money when it is killed
             if en.health <= 0:
                 self.retreat(en)
-                model.money += 30
+                if GreenEnemy():
+                    model.money += 15
+                elif RedEnemy():
+                    model.money += 20
+                elif PurpleEnemy():
+                    model.money += 25
+                else:
+                    model.money += 30
             # delete the object and drop 1 hp when it reach the base
             if BASE.collidepoint(en.rect.centerx, en.rect.centery):
                 self.retreat(en)
