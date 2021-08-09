@@ -9,10 +9,10 @@ UPGRADE_BTN_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("image
 SELL_BTN_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "sell.png")), (40, 40))
 
 #四個塔的圖片
-INJECTION_BTN_IMAGE  = pygame.transform.scale(pygame.image.load(os.path.join("images", "injection.png")), (40, 40))
-MASK_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "mask.png")), (56, 56))
-ALCOHOL_BTN_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "alcohol.png")), (40, 40))
-FOREHEAD_GUN_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "forehead_gun.png")), (40, 40))
+INJECTION_BTN_IMAGE  = pygame.transform.scale(pygame.image.load(os.path.join("images", "injection.png")), (50, 50))
+MASK_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "mask.png")), (70, 55))
+ALCOHOL_BTN_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "alcohol.png")), (35, 60))
+FOREHEAD_GUN_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "forehead_gun.png")), (60, 60))
 
 class Button:
     def __init__(self, image, name: str, x: int, y: int):
