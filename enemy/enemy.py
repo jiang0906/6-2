@@ -253,6 +253,7 @@ class EnemyGroup:
             if BASE.collidepoint(en.rect.centerx, en.rect.centery):
                 self.retreat(en)
                 model.hp -= 1
+                
 
     def draw(self, win):
         for en in self.__expedition:
