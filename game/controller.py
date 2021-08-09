@@ -52,6 +52,7 @@ class GameControl:
         if self.model.menu is not None:
             self.view.draw_thumbnail(self.model.menu)
             self.view.draw_menu(self.model.menu)
+            self.view.draw_Number(self.model.menu, self.model.selected_tower, self.model.selected_plot)
         # 顯示錢錢跟敵人來了幾波
         self.view.draw_money(self.model.money)
         self.view.draw_wave(self.model.wave)

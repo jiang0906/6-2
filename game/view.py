@@ -87,6 +87,29 @@ class GameView:
             if menu.rect.center == VACANCY[i]:
                 self.win.blit(Thumbnail[i], (150, 440))
 
+    def draw_Number(self, menu, tower, plot):
+        x, y = pygame.mouse.get_pos()
+        for btn in menu.buttons:
+            if btn.rect.collidepoint(x, y):
+                money = 100
+                if btn.name == "sell":
+                    money = tower.get_cost()
+                if btn.name == "upgrade" and tower.level < 5:
+                    money = tower.get_upgrade_cost()
+                if plot is not None:
+                    if btn.name == "mask":
+                        money = 200
+                    if btn.name == "injection":
+                        money = 200
+                    if btn.name == "alcohol":
+                        money = 250
+                    if btn.name == "foreheadgun":
+                        money = 300
+
+                font = pygame.font.SysFont("arial", 50)
+                text = font.render(f"{money}", True, (0,0,0))
+                self.win.blit(text, (x, y))
+
     def draw_game_result(self, model):
         pygame.draw.rect(self.win, BLACK, [100, 100, 640, 375])
         pygame.draw.rect(self.win, WHITE, [115, 115, 610, 345])
