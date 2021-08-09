@@ -24,6 +24,7 @@ class GreenEnemy:
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
         self.__expedition = []
+        self.damage_double_check=1
 
     def move(self):
         x1, y1 = self.path[self.path_index]
@@ -66,6 +67,24 @@ class GreenEnemy:
     def stride_revise_getback(self):
         self.stride = 1
 
+    def damage_double(self,level):
+        if level==0:
+            self.damage_double_check = 1.3
+        elif level==1:
+            self.damage_double_check = 1.6
+        elif level==2:
+            self.damage_double_check = 2.0
+        elif level==3:
+            self.damage_double_check = 2.3
+        elif level==4:
+            self.damage_double_check = 2.6
+        elif level==5:
+            self.damage_double_check = 3
+
+
+    def damage_double_back(self):
+        self.damage_double_check = 1
+
 
 class RedEnemy:
     def __init__(self):
@@ -79,6 +98,7 @@ class RedEnemy:
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
         self.__expedition = []
+        self.damage_double_check=1
 
 
     def move(self):
@@ -122,6 +142,23 @@ class RedEnemy:
     def stride_revise_getback(self):
         self.stride = 0.8
 
+    def damage_double(self,level):
+        if level==0:
+            self.damage_double_check = 1.3
+        elif level==1:
+            self.damage_double_check = 1.6
+        elif level==2:
+            self.damage_double_check = 2.0
+        elif level==3:
+            self.damage_double_check = 2.3
+        elif level==4:
+            self.damage_double_check = 2.6
+        elif level==5:
+            self.damage_double_check = 3
+
+    def damage_double_back(self):
+        self.damage_double_check = 1
+
 class PurpleEnemy:
     def __init__(self):
         self.max_health = 10
@@ -134,6 +171,7 @@ class PurpleEnemy:
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
         self.__expedition = []
+        self.damage_double_check = 1
 
 
     def move(self):
@@ -177,6 +215,23 @@ class PurpleEnemy:
     def stride_revise_getback(self):
         self.stride = 1.2
 
+    def damage_double(self,level):
+        if level==0:
+            self.damage_double_check = 1.3
+        elif level==1:
+            self.damage_double_check = 1.6
+        elif level==2:
+            self.damage_double_check = 2.0
+        elif level==3:
+            self.damage_double_check = 2.3
+        elif level==4:
+            self.damage_double_check = 2.6
+        elif level==5:
+            self.damage_double_check = 3
+
+    def damage_double_back(self):
+        self.damage_double_check = 1
+
 class BlackEnemy:
     def __init__(self):
         self.max_health = 15
@@ -189,6 +244,7 @@ class BlackEnemy:
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
         self.__expedition = []
+        self.damage_double_check = 1
 
 
     def move(self):
@@ -230,6 +286,23 @@ class BlackEnemy:
 
     def stride_revise_getback(self):
         self.stride = 1.1
+
+    def damage_double(self,level):
+        if level==0:
+            self.damage_double_check = 1.3
+        elif level==1:
+            self.damage_double_check = 1.6
+        elif level==2:
+            self.damage_double_check = 2.0
+        elif level==3:
+            self.damage_double_check = 2.3
+        elif level==4:
+            self.damage_double_check = 2.6
+        elif level==5:
+            self.damage_double_check = 3
+
+    def damage_double_back(self):
+        self.damage_double_check = 1
 
 class EnemyGroup:
     def __init__(self):
