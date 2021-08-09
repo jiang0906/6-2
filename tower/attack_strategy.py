@@ -20,7 +20,8 @@ class SingleAttack(AttackStrategy):
     def attack(self, enemies, tower, cd_count):
         for en in enemies:
             if in_range(en, tower):
-                en.health -= tower.damage
+                multiple = en.damage_double_check
+                en.health -= tower.damage*multiple
                 cd_count = 0
                 return cd_count#跑完第一隻就結束,代表只攻擊一次
         return cd_count
@@ -30,7 +31,8 @@ class AOE(AttackStrategy):
     def attack(self, enemies, tower, cd_count):
         for en in enemies:
             if in_range(en, tower):
-                en.health -= tower.damage
+                multiple = en.damage_double_check
+                en.health -= tower.damage * multiple
                 cd_count = 0
         #整個迴圈都跑完,代表整波敵人都會受到攻擊
         return cd_count
@@ -47,12 +49,17 @@ class Slowly(AttackStrategy):
             if in_range(en, tower)==False:
                 en.stride_revise_getback()
                 cd_count = 0
+        return cd_count
 
+class Attack_double(AttackStrategy):
+    '''make enemy in range get double damage'''
+    def attack(self, enemies, tower, cd_count):
         for en in enemies:
-            # 迴圈只跑一次,代表第一個敵人會受到攻擊
+            #進範圍,傷害倍數改變
             if in_range(en, tower):
-                en.health -= tower.damage
+                en.damage_double(tower.level)
                 cd_count = 0
-                return cd_count
-
+            else:#離開範圍傷害回歸一致
+                en.damage_double_back()
+                cd_count = 0
         return cd_count

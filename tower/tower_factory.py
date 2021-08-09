@@ -1,14 +1,14 @@
 from abc import ABC, abstractmethod
 import pygame
 import os
-from tower.attack_strategy import AOE, SingleAttack ,Slowly
+from tower.attack_strategy import AOE, SingleAttack , Slowly , Attack_double
 from settings import WIN_WIDTH, WIN_HEIGHT
 
 #攻擊的塔
 MASK_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "mask.png")), (70, 70))
 ALCOHOL_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "alcohol.png")), (60, 70))
 INJECTION_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "injection.png")), (60, 70))
-FOREHEAD_GUN_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "forehead_gun.png")), (60, 60))
+FOREHEAD_GUN_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "forehead_gun.png")), (70, 70))
 #黃色點點
 PLOT_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "vacant_lot.png")), (20, 20))
 
@@ -20,6 +20,7 @@ class Vacancy:
 
     def clicked(self, x: int, y: int) -> bool:
         return True if self.rect.collidepoint(x, y) else False
+
     '''def draw(self, win):
         win.blit(self.image, self.rect)'''
 
@@ -34,11 +35,11 @@ class Tower:
         self.cd_count = 0  # used in self.is_cool_down()
         self.cd_max_count = 60  # used in self.is_cool_down()
         self.attack_strategy = attack_strategy  # chose an attack strategy (AOE, single attack ....)
-        self.value = [200, 250, 300, 350, 450]
+        self.value = [200, 250, 300, 350, 450,500]
 
     @classmethod
     def Mask(cls, x, y):  # 口罩,攻擊方式目前暫訂單體攻擊
-        mask = cls(x, y, SingleAttack(), MASK_IMAGE)
+        mask = cls(x, y, Slowly(), MASK_IMAGE)
         mask._range = [130, 140, 150, 160, 170, 180]
         mask._damage = [2.0, 2.1, 2.2, 2.3, 2.4, 2.5]
         mask.value=[200,250,300,350,450,500]
@@ -61,8 +62,8 @@ class Tower:
         return injection
 
     @classmethod
-    def Foreheadgun(cls, x, y):  # 額溫槍,全體攻擊+緩速
-        foreheadgun = cls(x, y, Slowly(), FOREHEAD_GUN_IMAGE)
+    def Foreheadgun(cls, x, y):  # 額溫槍,only緩速
+        foreheadgun = cls(x, y, Attack_double(), FOREHEAD_GUN_IMAGE)
         foreheadgun._range = [130, 140, 150, 160, 170, 180]
         foreheadgun._damage = [1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
         foreheadgun.value = [300, 330, 390 ,450 , 500,560]
