@@ -7,7 +7,7 @@ from color_settings import *
 class GameView:
     def __init__(self):
         self.win = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-        self.font = pygame.font.SysFont("comicsans", 30)
+        self.font = pygame.font.SysFont("arial", 28)
 
     def draw_bg(self):
         self.win.blit(BACKGROUND_IMAGE, (0, 0))
@@ -47,18 +47,18 @@ class GameView:
             self.win.blit(pt.image, pt.rect)
 
     def draw_money(self, money: int):
-        self.font = pygame.font.SysFont("comicsans", 30)
+        self.font = pygame.font.SysFont("arial", 28)
         text = self.font.render(f"Money: {money}", True, BLACK)
         self.win.blit(text, (900, 30))
 
     def draw_wave(self, wave: int):
-        self.font = pygame.font.SysFont("comicsans", 30)
+        self.font = pygame.font.SysFont("arial", 28)
         text = self.font.render(f"Wave: {wave}", True, BLACK)
-        self.win.blit(text, (900, 15))
+        self.win.blit(text, (900, 10))
 
     def draw_popularity(self, support: int, notsupport: int):
         self.win.blit(POPULARITY_IMAGE, (800, 150))
-        self.font = pygame.font.SysFont("comicsans", 50)
+        self.font = pygame.font.SysFont("arial", 50)
         text = self.font.render(f"{support}%", True, GREEN)
         self.win.blit(text, (830, 220))
         text = self.font.render(f"{notsupport}%", True, RED)
@@ -66,7 +66,7 @@ class GameView:
 
     def draw_year_month(self, year: int, month: int, date: int, max_date: int):
         self.win.blit(CALENDER_IMAGE, (900, 290))
-        self.font = pygame.font.SysFont("comicsans", 30)
+        self.font = pygame.font.SysFont("arial", 28)
         text = self.font.render(f"{year} / {month}", True, BLACK)
         self.win.blit(text, (930, 298))
         # draw date bar
