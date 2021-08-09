@@ -322,11 +322,11 @@ class EnemyGroup:
             if en.health <= 0:
                 self.retreat(en)
                 if GreenEnemy():
-                    model.money += 15
+                    model.money += 20
                 elif RedEnemy():
                     model.money += 20
                 elif PurpleEnemy():
-                    model.money += 25
+                    model.money += 30
                 else:
                     model.money += 30
             # delete the object and drop 1 hp when it reach the base
