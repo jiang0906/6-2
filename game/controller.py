@@ -18,7 +18,8 @@ class GameControl:
         self.model.call_menu()
         self.model.towers_attack()
         self.model.enemies_advance()
-        self.model.condition_update()
+        if self.model.check_game_over() is False:
+            self.model.condition_update()
 
     def receive_user_input(self):
         """receive user input from the events"""
