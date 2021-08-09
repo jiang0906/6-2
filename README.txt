@@ -9,3 +9,5 @@ model GameModel init 新增 self.timer 40
 0809 01.10 更改model.py
 
 0809 01.38 更改enemy速度
+
+0809 14.40 更改user_request EnemyGenerator 隨機出enemy
