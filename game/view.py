@@ -49,12 +49,12 @@ class GameView:
     def draw_money(self, money: int):
         self.font = pygame.font.SysFont("arial", 28)
         text = self.font.render(f"Money: {money}", True, BLACK)
-        self.win.blit(text, (900, 30))
+        self.win.blit(text, (900, 10))
 
-    def draw_wave(self, wave: int):
+    '''def draw_wave(self, wave: int):
         self.font = pygame.font.SysFont("arial", 28)
         text = self.font.render(f"Wave: {wave}", True, BLACK)
-        self.win.blit(text, (900, 10))
+        self.win.blit(text, (900, 10))'''
 
     def draw_popularity(self, support: int, notsupport: int):
         self.win.blit(POPULARITY_IMAGE, (800, 150))
