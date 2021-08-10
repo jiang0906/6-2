@@ -321,6 +321,13 @@ class EnemyGroup:
             # delete the object and get money when it is killed
             if en.health <= 0:
                 self.retreat(en)
+
+                model.support += 1
+                if model.support > 100:
+                    model.support = 100
+                if model.support + model.notsupport > 100:
+                    model.notsupport = 100 - model.support
+
                 if GreenEnemy():
                     model.money += 20
                 elif RedEnemy():
@@ -333,8 +340,12 @@ class EnemyGroup:
             if BASE.collidepoint(en.rect.centerx, en.rect.centery):
                 self.retreat(en)
                 model.hp -= 1
-                model.notsupport += 5
-                
+
+                model.notsupport += 8
+                if model.notsupport > 100:
+                    model.notsupport = 100
+                if model.support + model.notsupport > 100:
+                    model.support = 100 - model.notsupport
 
     def draw(self, win):
         for en in self.__expedition:
