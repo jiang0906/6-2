@@ -1,3 +1,4 @@
+import random
 import pygame
 import math
 import os
@@ -12,11 +13,13 @@ RED_ENEMY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images"
 PURPLE_ENEMY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "PurpleEnemy.png")), (50, 50))
 BLACK_ENEMY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "BlackEnemy.png")), (50, 50))
 
+PATH_ALT = [PATH_1, PATH_2, PATH_3]
+
 class GreenEnemy:
     def __init__(self):
         self.max_health = 5
         self.health = self.max_health
-        self.path = PATH_2
+        self.path = random.choice(PATH_ALT)
         self.path_index = 0
         self.move_count = 0
         self.stride = 1
@@ -62,7 +65,7 @@ class GreenEnemy:
             pygame.draw.rect(win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
 
     def stride_revise(self):
-        self.stride = 0.9
+        self.stride = 0.85
 
     def stride_revise_getback(self):
         self.stride = 1
@@ -90,7 +93,7 @@ class RedEnemy:
     def __init__(self):
         self.max_health = 8
         self.health = self.max_health
-        self.path = PATH_1
+        self.path = random.choice(PATH_ALT)
         self.path_index = 0
         self.move_count = 0
         self.stride = 0.8
@@ -137,7 +140,7 @@ class RedEnemy:
             pygame.draw.rect(win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
 
     def stride_revise(self):
-        self.stride = 0.75
+        self.stride = 0.65
 
     def stride_revise_getback(self):
         self.stride = 0.8
@@ -163,10 +166,10 @@ class PurpleEnemy:
     def __init__(self):
         self.max_health = 10
         self.health = self.max_health
-        self.path = PATH_3
+        self.path = random.choice(PATH_ALT)
         self.path_index = 0
         self.move_count = 0
-        self.stride = 1.2
+        self.stride = 1.4
         self.image = PURPLE_ENEMY_IMAGE
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
@@ -210,10 +213,10 @@ class PurpleEnemy:
             pygame.draw.rect(win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
 
     def stride_revise(self):
-        self.stride = 1.1
+        self.stride = 1.25
 
     def stride_revise_getback(self):
-        self.stride = 1.2
+        self.stride = 1.4
 
     def damage_double(self,level):
         if level==0:
@@ -236,10 +239,10 @@ class BlackEnemy:
     def __init__(self):
         self.max_health = 15
         self.health = self.max_health
-        self.path = PATH_3
+        self.path = random.choice(PATH_ALT)
         self.path_index = 0
         self.move_count = 0
-        self.stride = 1.1
+        self.stride = 1.2
         self.image = BLACK_ENEMY_IMAGE
         self.rect = self.image.get_rect()
         self.rect.center = self.path[self.path_index]
@@ -282,10 +285,10 @@ class BlackEnemy:
             pygame.draw.rect(win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
 
     def stride_revise(self):
-        self.stride = 1
+        self.stride = 1.05
 
     def stride_revise_getback(self):
-        self.stride = 1.1
+        self.stride = 1.2
 
     def damage_double(self,level):
         if level==0:

@@ -6,8 +6,7 @@ class GameControl:
         self.model = game_model
         self.view = game_view
         self.events = {"game quit": False,
-                       "mouse position": [0, 0],
-                       "keyboard key": 0
+                       "mouse position": [0, 0]
                        }
         self.request = None  # response of user input
 
@@ -24,17 +23,12 @@ class GameControl:
         """receive user input from the events"""
         # event initialization
         self.events = {"game quit": False,
-                       "mouse position": None,
-                       "keyboard key": None
+                       "mouse position": None
                        }
         # update event
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.events["game quit"] = True
-            # player press action
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_n:
-                    self.events["keyboard key"] = pygame.K_n
             # player click action
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()

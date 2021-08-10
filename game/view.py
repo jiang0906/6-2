@@ -98,13 +98,13 @@ class GameView:
                     money = tower.get_upgrade_cost()
                 if plot is not None:
                     if btn.name == "mask":
-                        money = 200
+                        money = 150
                     if btn.name == "injection":
-                        money = 200
-                    if btn.name == "alcohol":
-                        money = 250
-                    if btn.name == "foreheadgun":
                         money = 300
+                    if btn.name == "alcohol":
+                        money = 400
+                    if btn.name == "foreheadgun":
+                        money = 200
 
                 font = pygame.font.SysFont("arial", 50)
                 text = font.render(f"{money}", True, (0,0,0))

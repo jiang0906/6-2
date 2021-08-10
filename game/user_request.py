@@ -29,8 +29,8 @@ class EnemyGenerator:
 
     def update(self, user_request: str, model):
         """add new enemy"""
-        # 敵人會在開始遊戲後3秒出現，按照順序 不照數量
-        if time.time() - model.timer >= 3:
+        # 敵人會在開始遊戲後3秒出現，場上空的時候才會生成下一波病毒
+        if time.time() - model.timer >= 3 and model.enemies.is_empty():
             model.enemies.add(10)
             model.wave += 1
             model.timer = time.time()
