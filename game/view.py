@@ -1,6 +1,6 @@
 import pygame
 from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE, POPULARITY_IMAGE, CALENDER_IMAGE
-from settings import Thumbnail, Thumbnail_WIDTH, Thumbnail_HEIGHT, VACANCY, PRESIDENT_IMAGE
+from settings import Thumbnail, Thumbnail_WIDTH, Thumbnail_HEIGHT, VACANCY, PRESIDENT_IMAGE ,SUCCESSFUL_IMAGE ,DEFECT_IMAGE
 from color_settings import *
 
 
@@ -110,15 +110,18 @@ class GameView:
                 text = font.render(f"{money}", True, (0,0,0))
                 self.win.blit(text, (x, y))
 
-    def draw_game_result(self, model):
-        pygame.draw.rect(self.win, BLACK, [100, 100, 640, 375])
-        pygame.draw.rect(self.win, WHITE, [115, 115, 610, 345])
-        self.win.blit(PRESIDENT_IMAGE, (120, 120))
-        self.font = pygame.font.SysFont("arial", 50)
-        text = self.font.render(f"NCKU president Su", True, BLACK)
-        self.win.blit(text, (210, 350))
-        text = self.font.render(f"Re-elected successfully !!", True, BLACK)
-        self.win.blit(text, (210, 400))
+    def draw_game_result(self, model,support,notsupport):
+        #pygame.draw.rect(self.win, BLACK, [100, 100, 640, 375])
+        #pygame.draw.rect(self.win, WHITE, [115, 115, 610, 345])
+        if support>notsupport:
+            self.win.blit(SUCCESSFUL_IMAGE, (120, 120))
+        else:
+            self.win.blit(DEFECT_IMAGE, (120, 120))
+        #self.font = pygame.font.SysFont("arial", 50)
+        #text = self.font.render(f"NCKU president Su", True, BLACK)
+        #self.win.blit(text, (210, 350))
+        #text = self.font.render(f"Re-elected successfully !!", True, BLACK)
+        #self.win.blit(text, (210, 400))
 
 
     '''def draw_hp(self, lives):

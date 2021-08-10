@@ -60,7 +60,7 @@ class GameControl:
         self.view.draw_popularity(self.model.support, self.model.notsupport)
         self.view.draw_year_month(self.model.year, self.model.month, self.model.date, self.model.max_date)
         if self.model.check_game_over() is True:
-            self.view.draw_game_result(self.model)
+            self.view.draw_game_result(self.model,self.model.support, self.model.notsupport)
 
 
     @property

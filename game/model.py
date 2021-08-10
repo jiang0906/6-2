@@ -34,7 +34,7 @@ class GameModel:
         self.muse = Muse(self.subject)
         self.music = Music(self.subject)
         self.wave = 0
-        self.money = 500
+        self.money =700
         self.support = 50
         self.notsupport = 10
         self.year = 2021
