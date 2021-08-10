@@ -38,35 +38,35 @@ class Tower:
         self.value = [200, 250, 300, 350, 450,500]
 
     @classmethod
-    def Mask(cls, x, y):  # 口罩,攻擊方式目前暫訂單體攻擊
+    def Mask(cls, x, y):  # 口罩,只有緩速
         mask = cls(x, y, Slowly(), MASK_IMAGE)
         mask._range = [130, 140, 150, 160, 170, 180]
         mask._damage = [2.0, 2.1, 2.2, 2.3, 2.4, 2.5]
-        mask.value=[200,250,300,350,450,500]
+        mask.value=[150,180,210,240,270,310]
         return mask
 
     @classmethod
     def Alcohol(cls, x, y):  # 酒精,全體攻擊
         alcohol = cls(x, y, AOE(), ALCOHOL_IMAGE)
-        alcohol._range = [130, 140, 150, 160, 170, 180]
+        alcohol._range = [ 140, 150, 160, 170, 180,190]
         alcohol._damage = [1.5, 1.7, 1.9, 2.1, 2.3,2.5]
-        alcohol.value = [250, 270, 310, 350, 410,450]
+        alcohol.value = [400,440,480,520,560,600]
         return alcohol
 
     @classmethod
     def Injection(cls, x, y):  # 打針,單體攻擊
         injection = cls(x, y, SingleAttack(), INJECTION_IMAGE)
-        injection._range = [130, 140, 150, 160, 170, 180]
+        injection._range = [160, 170, 180, 190, 200, 210]
         injection._damage = [3.0, 3.1, 3.2, 3.3, 3.4, 3.5]
-        injection.value = [200, 220, 250, 280, 330,380]
+        injection.value = [300,330,360,390,420,450]
         return injection
 
     @classmethod
-    def Foreheadgun(cls, x, y):  # 額溫槍,only緩速
+    def Foreheadgun(cls, x, y):  # 額溫槍,傷害加被
         foreheadgun = cls(x, y, Attack_double(), FOREHEAD_GUN_IMAGE)
-        foreheadgun._range = [130, 140, 150, 160, 170, 180]
+        foreheadgun._range = [160, 170, 180, 190, 200, 210]
         foreheadgun._damage = [1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
-        foreheadgun.value = [300, 330, 390 ,450 , 500,560]
+        foreheadgun.value = [200,240,280,320,360,400]
         return foreheadgun
 
     def attack(self, enemy_group):
