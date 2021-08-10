@@ -13,3 +13,5 @@ model GameModel init 新增 self.timer 40
 0809 14.40 更改user_request EnemyGenerator 隨機出enemy
 
 0809 22.25 更改enemy:殺掉不同enemy，得到不同的錢
+
+0810 14:53 更改view.py 跟 controller.py我有重新上傳  把顯示wave的東西刪掉了
