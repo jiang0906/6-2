@@ -17,3 +17,5 @@ model GameModel init 新增 self.timer 40
 0810 14:53 更改view.py 跟 controller.py我有重新上傳  把顯示wave的東西刪掉了
 
 0810 15:07 更改view.py 把錢位置改成(900,0)  (第52行)
+
+0810 18:51 大改 改最後游系結束圖片 建議直接下載
