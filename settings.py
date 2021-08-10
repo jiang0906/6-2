@@ -17,6 +17,8 @@ for i in range(12):
     Thumbnail.append(pygame.transform.scale(pygame.image.load(f"images/background_{i}.jpg"), (Thumbnail_WIDTH, Thumbnail_HEIGHT)))
 
 PRESIDENT_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "president.png")), (600, 340))
+SUCCESSFUL_IMAGE=pygame.transform.scale(pygame.image.load(os.path.join("images", "game_over_successful.jpg")), (600, 340))
+DEFECT_IMAGE=pygame.transform.scale(pygame.image.load(os.path.join("images", "game_over_defect.jpg")), (600, 340))
 
 # frame rate
 FPS = 60
