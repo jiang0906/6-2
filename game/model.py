@@ -40,7 +40,7 @@ class GameModel:
         self.year = 2021
         self.month = 8
         self.date = 0
-        self.max_date = 300
+        self.max_date = 400
         self.max_hp = 10
         self.hp = self.max_hp
         self.timer = time.time()
@@ -113,19 +113,21 @@ class GameModel:
         self.__enemies.advance(self)
 
     def condition_update(self):
-        self.date += 1
-        if self.date % self.max_date == 0:
-            self.date = 0
-            self.month += 1
-            if self.support+self.notsupport <= 100:
-                self.support += 3
-            if self.month == 13:
-                self.month = 1
-                self.year += 1
-        if self.notsupport > 100:
-            self.notsupport = 100
+        if self.check_game_over() is False:
+            self.date += 1
+            if self.date % self.max_date == 0:
+                self.date = 0
+                self.month += 1
+                self.support += 1
+                if self.month == 13:
+                    self.month = 1
+                    self.year += 1
+
+        if self.support > 100:
+            self.support = 100
         if self.support + self.notsupport > 100:
-            self.support = 100 - self.notsupport
+            self.notsupport = 100 - self.support
+
 
     def check_game_over(self):
         if self.year == 2023 and self.month == 1:

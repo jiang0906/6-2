@@ -18,8 +18,7 @@ class GameControl:
         self.model.call_menu()
         self.model.towers_attack()
         self.model.enemies_advance()
-        if self.model.check_game_over() is False:
-            self.model.condition_update()
+        self.model.condition_update()
 
     def receive_user_input(self):
         """receive user input from the events"""
@@ -60,7 +59,7 @@ class GameControl:
         self.view.draw_popularity(self.model.support, self.model.notsupport)
         self.view.draw_year_month(self.model.year, self.model.month, self.model.date, self.model.max_date)
         if self.model.check_game_over() is True:
-            self.view.draw_game_result(self.model,self.model.support, self.model.notsupport)
+            self.view.draw_game_result(self.model, self.model.support, self.model.notsupport)
 
 
     @property

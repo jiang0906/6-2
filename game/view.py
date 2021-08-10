@@ -60,15 +60,15 @@ class GameView:
         self.win.blit(POPULARITY_IMAGE, (800, 150))
         self.font = pygame.font.SysFont("arial", 50)
         text = self.font.render(f"{support}%", True, GREEN)
-        self.win.blit(text, (830, 220))
+        self.win.blit(text, (810, 220))
         text = self.font.render(f"{notsupport}%", True, RED)
-        self.win.blit(text, (930, 220))
+        self.win.blit(text, (905, 220))
 
     def draw_year_month(self, year: int, month: int, date: int, max_date: int):
         self.win.blit(CALENDER_IMAGE, (900, 290))
         self.font = pygame.font.SysFont("arial", 28)
         text = self.font.render(f"{year} / {month}", True, BLACK)
-        self.win.blit(text, (930, 298))
+        self.win.blit(text, (928, 290))
         # draw date bar
         bar_height = 7
         bar_length = 100 * (max_date-date)/max_date
