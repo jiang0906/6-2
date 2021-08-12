@@ -29,8 +29,12 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 PURPLE = (147, 0, 147)
 
+PATH_1 = [(35, 431), (98, 380), (420, 380), (420, 537)]
+PATH_2 = [(419, 28), (419, 110), (657, 110), (657, 349), (582, 380), (420, 380), (420, 537)]
+PATH_3 = [(417, 28), (418, 107), (98, 106), (97, 170), (138, 221), (418, 218), (420, 536)]
+VACANCY = [(110, 448), (331, 444), (179, 160), (291, 157), (417, 163), (338, 296), (233, 295), (142, 292), (496, 294), (584, 167), (498, 444), (582, 297)]
 # enemy path
-# 打開txt檔
+'''# 打開txt檔
 fileObject = open("paths/path_1.txt ", 'r')
 # 讀取一行內容
 line = fileObject.readline()
@@ -76,7 +80,7 @@ while line:
     VACANCY.append(eval(line))
     line = fileObject.readline()
 # 關閉txt檔
-fileObject.close()
+fileObject.close()'''
 
 # base
 BASE = pygame.Rect(415, 535, 50, 50)
