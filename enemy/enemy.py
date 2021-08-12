@@ -1,11 +1,13 @@
+from __future__ import annotations
 import random
 import pygame
 import math
 import os
 from settings import PATH_1, PATH_2, PATH_3, BASE
 from color_settings import *
-
-
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from game.model import GameModel
 
 pygame.init()
 GREEN_ENEMY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "GreenEnemy.png")), (50, 50))
@@ -14,6 +16,7 @@ PURPLE_ENEMY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("imag
 BLACK_ENEMY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "BlackEnemy.png")), (50, 50))
 
 PATH_ALT = [PATH_1, PATH_2, PATH_3]
+
 
 class GreenEnemy:
     def __init__(self):
@@ -52,7 +55,6 @@ class GreenEnemy:
             self.path_index += 1
             self.rect.center = self.path[self.path_index]
 
-
     def draw(self, win):
         for en in self.__expedition:
             win.blit(en.image, en.rect)
@@ -70,20 +72,19 @@ class GreenEnemy:
     def stride_revise_getback(self):
         self.stride = 1
 
-    def damage_double(self,level):
-        if level==0:
+    def damage_double(self, level: int):
+        if level == 0:
             self.damage_double_check = 1.3
-        elif level==1:
+        elif level == 1:
             self.damage_double_check = 1.6
-        elif level==2:
+        elif level == 2:
             self.damage_double_check = 2.0
-        elif level==3:
+        elif level == 3:
             self.damage_double_check = 2.3
-        elif level==4:
+        elif level == 4:
             self.damage_double_check = 2.6
-        elif level==5:
+        elif level == 5:
             self.damage_double_check = 3
-
 
     def damage_double_back(self):
         self.damage_double_check = 1
@@ -103,7 +104,6 @@ class RedEnemy:
         self.__expedition = []
         self.damage_double_check=1
 
-
     def move(self):
         x1, y1 = self.path[self.path_index]
         x2, y2 = self.path[self.path_index + 1]
@@ -126,7 +126,6 @@ class RedEnemy:
             self.move_count = 0
             self.path_index += 1
             self.rect.center = self.path[self.path_index]
-
 
     def draw(self, win):
         for en in self.__expedition:
@@ -145,7 +144,7 @@ class RedEnemy:
     def stride_revise_getback(self):
         self.stride = 0.8
 
-    def damage_double(self,level):
+    def damage_double(self, level: int):
         if level==0:
             self.damage_double_check = 1.3
         elif level==1:
@@ -162,6 +161,7 @@ class RedEnemy:
     def damage_double_back(self):
         self.damage_double_check = 1
 
+
 class PurpleEnemy:
     def __init__(self):
         self.max_health = 10
@@ -175,7 +175,6 @@ class PurpleEnemy:
         self.rect.center = self.path[self.path_index]
         self.__expedition = []
         self.damage_double_check = 1
-
 
     def move(self):
         x1, y1 = self.path[self.path_index]
@@ -200,7 +199,6 @@ class PurpleEnemy:
             self.path_index += 1
             self.rect.center = self.path[self.path_index]
 
-
     def draw(self, win):
         for en in self.__expedition:
             win.blit(en.image, en.rect)
@@ -218,7 +216,7 @@ class PurpleEnemy:
     def stride_revise_getback(self):
         self.stride = 1.4
 
-    def damage_double(self,level):
+    def damage_double(self, level: int):
         if level==0:
             self.damage_double_check = 1.3
         elif level==1:
@@ -235,6 +233,7 @@ class PurpleEnemy:
     def damage_double_back(self):
         self.damage_double_check = 1
 
+
 class BlackEnemy:
     def __init__(self):
         self.max_health = 15
@@ -248,7 +247,6 @@ class BlackEnemy:
         self.rect.center = self.path[self.path_index]
         self.__expedition = []
         self.damage_double_check = 1
-
 
     def move(self):
         x1, y1 = self.path[self.path_index]
@@ -290,7 +288,7 @@ class BlackEnemy:
     def stride_revise_getback(self):
         self.stride = 1.2
 
-    def damage_double(self,level):
+    def damage_double(self, level: int):
         if level==0:
             self.damage_double_check = 1.3
         elif level==1:
@@ -307,6 +305,7 @@ class BlackEnemy:
     def damage_double_back(self):
         self.damage_double_check = 1
 
+
 class EnemyGroup:
     def __init__(self):
         self.campaign_count = 0
@@ -315,8 +314,7 @@ class EnemyGroup:
         self.__expedition = []
         self.wave = 0
 
-
-    def advance(self, model):
+    def advance(self, model: GameModel):
         # use model.hp and model.money to access the hp and money information
         self.campaign()
         for en in self.__expedition:
@@ -370,7 +368,7 @@ class EnemyGroup:
         else:
             self.campaign_count += 1
 
-    def add(self, num):
+    def add(self, num: int):
         """
         Generate the enemies for next wave
         """

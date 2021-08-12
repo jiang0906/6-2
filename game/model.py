@@ -1,3 +1,4 @@
+from __future__ import annotations
 import pygame
 import os
 import time
@@ -6,6 +7,9 @@ from enemy.enemy import EnemyGroup
 from menu.menus import UpgradeMenu, BuildMenu, MainMenu
 from game.user_request import RequestSubject, TowerFactory, TowerSeller, TowerDeveloper, EnemyGenerator, Muse, Music
 from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from menu.menus import Menu
 
 
 class GameModel:
@@ -128,7 +132,6 @@ class GameModel:
         if self.support + self.notsupport > 100:
             self.notsupport = 100 - self.support
 
-
     def check_game_over(self):
         if self.year == 2023 and self.month == 1:
             return True
@@ -147,7 +150,7 @@ class GameModel:
         return self.__menu
 
     @menu.setter
-    def menu(self, new_menu):
+    def menu(self, new_menu: Menu):
         self.__menu = new_menu
 
     @property

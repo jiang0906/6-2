@@ -4,7 +4,6 @@ from game.game import Game
 from color_settings import *
 from settings import WIN_WIDTH, WIN_HEIGHT, FPS
 
-
 pygame.mixer.pre_init(44100, 16, 2, 4096)
 pygame.init()
 pygame.mixer.init()
@@ -74,7 +73,7 @@ class StartMenu:
 
 
 class Buttons:
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, width: int, height: int):
         self.rect = pygame.Rect(x, y, width, height)
         self.frame = None
 

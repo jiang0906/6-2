@@ -3,16 +3,17 @@ import os
 
 pygame.init()
 
-#menu,升級,賣出圖片
+# menu,升級,賣出圖片
 MENU_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "upgrade_menu.png")), (200, 200))
 UPGRADE_BTN_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "upgrade.png")), (60, 35))
 SELL_BTN_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "sell.png")), (40, 40))
 
-#四個塔的圖片
+# 四個塔的圖片
 INJECTION_BTN_IMAGE  = pygame.transform.scale(pygame.image.load(os.path.join("images", "injection.png")), (50, 50))
 MASK_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "mask.png")), (70, 55))
 ALCOHOL_BTN_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "alcohol.png")), (35, 60))
 FOREHEAD_GUN_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "forehead_gun.png")), (60, 60))
+
 
 class Button:
     def __init__(self, image, name: str, x: int, y: int):
@@ -27,6 +28,7 @@ class Button:
     @property
     def response(self):
         return self.name
+
 
 class Menu:
     def __init__(self, x: int, y: int):
@@ -44,15 +46,17 @@ class Menu:
     def get_buttons(self):
         return self._buttons
 
+
 class UpgradeMenu(Menu):
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int):
         super().__init__(x, y)
         self.buttons = [Button(UPGRADE_BTN_IMAGE, "upgrade", self.rect.centerx, self.rect.centery - 70),
                          Button(SELL_BTN_IMAGE, "sell", self.rect.centerx, self.rect.centery + 75),
                          ]
 
+
 class BuildMenu(Menu):
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int):
         super().__init__(x, y)
         """
         button name: mask , injection , alcohol

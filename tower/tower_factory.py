@@ -1,22 +1,28 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
 import pygame
 import os
 from tower.attack_strategy import AOE, SingleAttack , Slowly , Attack_double
 from settings import WIN_WIDTH, WIN_HEIGHT
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from tower.attack_strategy import AttackStrategy
+    from enemy.enemy import EnemyGroup
 
-#攻擊的塔
+
+# 攻擊的塔
 MASK_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "mask.png")), (70, 70))
 ALCOHOL_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "alcohol.png")), (60, 70))
 INJECTION_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "injection.png")), (60, 70))
 FOREHEAD_GUN_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "forehead_gun.png")), (70, 70))
-#黃色點點
+# 黃色點點
 PLOT_IMAGE= pygame.transform.scale(pygame.image.load(os.path.join("images", "vacant_lot.png")), (20, 20))
 
 class Vacancy:
-    def __init__(self,x,y):
-        self.image=PLOT_IMAGE;
-        self.rect=self.image.get_rect()
-        self.rect.center=(x,y)
+    def __init__(self, x: int, y: int):
+        self.image = PLOT_IMAGE
+        self.rect = self.image.get_rect()
+        self.rect.center = (x, y)
 
     def clicked(self, x: int, y: int) -> bool:
         return True if self.rect.collidepoint(x, y) else False
@@ -25,7 +31,7 @@ class Vacancy:
         win.blit(self.image, self.rect)'''
 
 class Tower:
-    def __init__(self, x: int, y: int, attack_strategy, image):
+    def __init__(self, x: int, y: int, attack_strategy: AttackStrategy, image):
         self.image = image  # image of the tower
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)  # center of the tower
@@ -38,7 +44,7 @@ class Tower:
         self.value = [200, 250, 300, 350, 450,500]
 
     @classmethod
-    def Mask(cls, x, y):  # 口罩,只有緩速
+    def Mask(cls, x: int, y: int):  # 口罩,只有緩速
         mask = cls(x, y, Slowly(), MASK_IMAGE)
         mask._range = [130, 140, 150, 160, 170, 180]
         mask._damage = [2.0, 2.1, 2.2, 2.3, 2.4, 2.5]
@@ -46,7 +52,7 @@ class Tower:
         return mask
 
     @classmethod
-    def Alcohol(cls, x, y):  # 酒精,全體攻擊
+    def Alcohol(cls, x: int, y: int):  # 酒精,全體攻擊
         alcohol = cls(x, y, AOE(), ALCOHOL_IMAGE)
         alcohol._range = [ 140, 150, 160, 170, 180,190]
         alcohol._damage = [1.5, 1.7, 1.9, 2.1, 2.3,2.5]
@@ -54,7 +60,7 @@ class Tower:
         return alcohol
 
     @classmethod
-    def Injection(cls, x, y):  # 打針,單體攻擊
+    def Injection(cls, x: int, y: int):  # 打針,單體攻擊
         injection = cls(x, y, SingleAttack(), INJECTION_IMAGE)
         injection._range = [160, 170, 180, 190, 200, 210]
         injection._damage = [3.0, 3.1, 3.2, 3.3, 3.4, 3.5]
@@ -62,14 +68,14 @@ class Tower:
         return injection
 
     @classmethod
-    def Foreheadgun(cls, x, y):  # 額溫槍,傷害加被
+    def Foreheadgun(cls, x: int, y: int):  # 額溫槍,傷害加被
         foreheadgun = cls(x, y, Attack_double(), FOREHEAD_GUN_IMAGE)
         foreheadgun._range = [160, 170, 180, 190, 200, 210]
         foreheadgun._damage = [1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
         foreheadgun.value = [200,240,280,320,360,400]
         return foreheadgun
 
-    def attack(self, enemy_group):
+    def attack(self, enemy_group: EnemyGroup):
         # cd
         if self.cd_count < self.cd_max_count:
             self.cd_count += 1
@@ -95,7 +101,7 @@ class Tower:
     def damage(self):
         return self._damage[self.level]
 
-    def clicked(self, x, y):
+    def clicked(self, x: int, y: int):
         return True if self.rect.collidepoint(x, y) else False
 
     '''def draw_effect_range(self, win):

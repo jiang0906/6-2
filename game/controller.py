@@ -1,8 +1,14 @@
+from __future__ import annotations
 import pygame
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from game.model import GameModel
+    from game.view import GameView
+
 
 # controller
 class GameControl:
-    def __init__(self, game_model, game_view):
+    def __init__(self, game_model: GameModel, game_view: GameView):
         self.model = game_model
         self.view = game_view
         self.events = {"game quit": False,
@@ -49,12 +55,11 @@ class GameControl:
             self.view.draw_Number(self.model.menu, self.model.selected_tower, self.model.selected_plot)
         # 顯示錢錢跟敵人來了幾波
         self.view.draw_money(self.model.money)
-        #self.view.draw_wave(self.model.wave)
+        # self.view.draw_wave(self.model.wave)
         self.view.draw_popularity(self.model.support, self.model.notsupport)
         self.view.draw_year_month(self.model.year, self.model.month, self.model.date, self.model.max_date)
         if self.model.check_game_over() is True:
             self.view.draw_game_result(self.model, self.model.support, self.model.notsupport)
-
 
     @property
     def quit_game(self):

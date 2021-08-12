@@ -1,7 +1,14 @@
+from __future__ import annotations
 import pygame
 from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE, POPULARITY_IMAGE, CALENDER_IMAGE
 from settings import Thumbnail, Thumbnail_WIDTH, Thumbnail_HEIGHT, VACANCY, PRESIDENT_IMAGE ,SUCCESSFUL_IMAGE ,DEFECT_IMAGE
 from color_settings import *
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from enemy.enemy import EnemyGroup
+    from tower.tower_factory import Tower, Vacancy
+    from menu.menus import Menu
+    from game.model import GameModel
 
 
 class GameView:
@@ -12,7 +19,7 @@ class GameView:
     def draw_bg(self):
         self.win.blit(BACKGROUND_IMAGE, (0, 0))
 
-    def draw_enemies(self, enemies):
+    def draw_enemies(self, enemies: EnemyGroup):
         for en in enemies.get():
             self.win.blit(en.image, en.rect)
             # draw health bar
@@ -22,12 +29,12 @@ class GameView:
             pygame.draw.rect(self.win, RED, [en.rect.x, en.rect.y - 10, max_bar_width, bar_height])
             pygame.draw.rect(self.win, GREEN, [en.rect.x, en.rect.y - 10, bar_width, bar_height])
 
-    def draw_towers(self, towers):
+    def draw_towers(self, towers: list):
         # draw tower
         for tw in towers:
             self.win.blit(tw.image, tw.rect)
 
-    def draw_range(self, selected_tower):
+    def draw_range(self, selected_tower: Tower):
         # draw tower range
         if selected_tower is not None:
             tw = selected_tower
@@ -37,12 +44,12 @@ class GameView:
             pygame.draw.circle(surface, (128, 128, 128, transparency), tw.rect.center, tw.range)
             self.win.blit(surface, (0, 0))
 
-    def draw_menu(self, menu):
+    def draw_menu(self, menu: Menu):
         self.win.blit(menu.image, menu.rect)
         for btn in menu.buttons:
             self.win.blit(btn.image, btn.rect)
 
-    def draw_plots(self, plots):
+    def draw_plots(self, plots: list):
         for pt in plots:
             self.win.blit(pt.image, pt.rect)
 
@@ -75,7 +82,7 @@ class GameView:
         pygame.draw.rect(self.win, GRAY, [800, 310, 100, bar_height])
         pygame.draw.rect(self.win, BLACK, [800, 300, bar_length, bar_height])
 
-    def draw_thumbnail(self, menu):
+    def draw_thumbnail(self, menu: Menu):
         # create semi-transparent surface
         transparent_surface = pygame.Surface((Thumbnail_WIDTH + 20, Thumbnail_HEIGHT + 20), pygame.SRCALPHA)
         transparency = 50  # define transparency: 0~255, 0 is fully transparent
@@ -87,7 +94,7 @@ class GameView:
             if menu.rect.center == VACANCY[i]:
                 self.win.blit(Thumbnail[i], (150, 440))
 
-    def draw_Number(self, menu, tower, plot):
+    def draw_Number(self, menu: Menu, tower: Tower, plot: Vacancy):
         x, y = pygame.mouse.get_pos()
         for btn in menu.buttons:
             if btn.rect.collidepoint(x, y):
@@ -110,10 +117,10 @@ class GameView:
                 text = font.render(f"{money}", True, (0,0,0))
                 self.win.blit(text, (x, y))
 
-    def draw_game_result(self, model,support,notsupport):
+    def draw_game_result(self, support: int, notsupport: int):
         #pygame.draw.rect(self.win, BLACK, [100, 100, 640, 375])
         #pygame.draw.rect(self.win, WHITE, [115, 115, 610, 345])
-        if support>notsupport:
+        if support > notsupport:
             self.win.blit(SUCCESSFUL_IMAGE, (120, 120))
         else:
             self.win.blit(DEFECT_IMAGE, (120, 120))
