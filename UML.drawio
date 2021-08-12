@@ -1,12 +1,9 @@
-<mxfile host="app.diagrams.net" modified="2021-08-09T03:12:05.775Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36" etag="Be1Ymw82jHwFcxqSbG6q" version="14.9.5" type="github">
+<mxfile host="app.diagrams.net" modified="2021-08-12T03:12:23.738Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36" etag="m-NwB6l0JHG8gnc69cxq" version="14.9.5" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="2234" dy="1177" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1303" dy="748" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
-        <mxCell id="tjoVgDpYeIoy6xXFeEll-1" value="崴崴好可愛" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="878" y="100" width="82" height="20" as="geometry" />
-        </mxCell>
         <mxCell id="nteBSBuD71TsZTLeSuAN-41" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;size=250;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="40" y="300" width="260" height="690" as="geometry" />
         </mxCell>
@@ -174,9 +171,6 @@
               <mxPoint x="870" y="760" />
             </Array>
           </mxGeometry>
-        </mxCell>
-        <mxCell id="PEocMXkibnuBXIMPjLkJ-12" value="打開遊戲&lt;br&gt;點擊開始鍵(user)&lt;br&gt;生成敵人(sys)&lt;br&gt;波數+1(sys)&lt;br&gt;點擊空白塔位(user)&lt;br&gt;生成menu(sys)&lt;br&gt;點擊防禦塔(user)&lt;br&gt;生成防禦塔(sys)&lt;br&gt;錢減少(sys)&lt;br&gt;塔與敵人碰撞觸發攻擊(sys)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="2810" y="570" width="200" height="210" as="geometry" />
         </mxCell>
         <mxCell id="yFMV36JGLBhfF26aKYtW-0" value="User&lt;br&gt;(Input)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="1250" y="420" width="30" height="60" as="geometry" />
