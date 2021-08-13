@@ -9,6 +9,15 @@ WIN_HEIGHT = 600
 BACKGROUND_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "NCKU.png")), (WIN_WIDTH, WIN_HEIGHT))
 POPULARITY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "popularity.png")), (210, 140))
 CALENDER_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "calendar.png")), (30, 30))
+# story
+story_1 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story1.jpg")), (WIN_WIDTH, WIN_HEIGHT))
+story_2 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story2.jpg")), (WIN_WIDTH, WIN_HEIGHT))
+story_3 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story3.jpg")), (WIN_WIDTH, WIN_HEIGHT))
+story_4 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story4.jpg")), (WIN_WIDTH, WIN_HEIGHT))
+story_5 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story5.jpg")), (WIN_WIDTH, WIN_HEIGHT))
+story_6 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story6.jpg")), (WIN_WIDTH, WIN_HEIGHT))
+story_7 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story7.jpg")), (WIN_WIDTH, WIN_HEIGHT))
+skip_btn = pygame.transform.scale(pygame.image.load(os.path.join("images", "skip_btn.png")), (100, 50))
 
 Thumbnail_WIDTH = 204
 Thumbnail_HEIGHT = 136

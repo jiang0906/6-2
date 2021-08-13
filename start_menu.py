@@ -1,8 +1,9 @@
 import pygame
 import os
 from game.game import Game
+from story import Story
 from color_settings import *
-from settings import WIN_WIDTH, WIN_HEIGHT, FPS
+from settings import *
 
 
 pygame.mixer.pre_init(44100, 16, 2, 4096)
@@ -24,6 +25,7 @@ class StartMenu:
                         self.mute_btn]
         # music and sound
         self.sound = pygame.mixer.Sound("./sound/sound_in_game.wav")
+
 
     ''''def play_music(self):
         pygame.mixer.music.load("./sound/sound_start.wav")
@@ -51,7 +53,9 @@ class StartMenu:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     # check if hit start btn
                     if self.start_btn.clicked(x, y):
-                        pygame.mixer.music.stop()
+                        story = Story()
+                        story.run()
+                        # pygame.mixer.music.stop() 移到story裡面 不然會有初始化的問題
                         self.sound.play()
                         game = Game()
                         game.run()
