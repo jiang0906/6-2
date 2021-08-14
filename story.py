@@ -32,7 +32,6 @@ class Story:
         pygame.mixer.music.stop()
 
 
-
 class Clicked:
     def __init__(self, x, y, width, height):
         self.rect = pygame.Rect(x, y, width, height)

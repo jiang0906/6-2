@@ -19,11 +19,12 @@ class GameControl:
     def update_model(self):
         """update the model and the view here"""
         self.request = self.model.get_request(self.events)
-        self.model.user_request(self.request)
-        self.model.call_menu()
-        self.model.towers_attack()
-        self.model.enemies_advance()
-        self.model.condition_update()
+        if self.model.stop_button.is_stopped() is False:  # 如果暫停了就不update
+            self.model.user_request(self.request)
+            self.model.call_menu()
+            self.model.towers_attack()
+            self.model.enemies_advance()
+            self.model.condition_update()
 
     def receive_user_input(self):
         """receive user input from the events"""
@@ -43,6 +44,7 @@ class GameControl:
     def update_view(self):
         # render background
         self.view.draw_bg()
+        self.view.draw_stop(self.model.stop_button)
         '''self.view.draw_hp(self.model.hp)'''
         self.view.draw_enemies(self.model.enemies)
         self.view.draw_towers(self.model.towers)

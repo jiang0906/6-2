@@ -6,7 +6,8 @@ from tower.tower_factory import Tower, Vacancy
 from enemy.enemy import EnemyGroup
 from menu.menus import UpgradeMenu, BuildMenu, MainMenu
 from game.user_request import RequestSubject, TowerFactory, TowerSeller, TowerDeveloper, EnemyGenerator, Muse, Music
-from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE
+from game.stop import *
+from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE, STOP_IMAGE
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from menu.menus import Menu
@@ -16,6 +17,7 @@ class GameModel:
     def __init__(self):
         # data
         self.bg_image = BACKGROUND_IMAGE
+        self.stop_button = Stop(1000, 575)
         self.__towers = []
         self.__enemies = EnemyGroup()
         self.__menu = None
@@ -73,6 +75,16 @@ class GameModel:
     def select(self, mouse_x: int, mouse_y: int) -> None:
         """change the state of whether the items are selected"""
         # if the item is clicked, select the item
+        if self.stop_button.is_stopped():  # 如果現在正在暫停當中
+            if self.stop_button.clicked(mouse_x, mouse_y):  # 又按下stop
+                self.stop_button.is_stop = False  # 就代表遊戲繼續
+            else:
+                return  # 否則遊戲還是暫停
+        else:
+            if self.stop_button.clicked(mouse_x, mouse_y):  # 如果現在遊戲進行中
+                self.stop_button.is_stop = True  # 按下stop便代表遊戲暫停
+                return  # 不接受其餘clicked指令
+
         for tw in self.__towers:
             if tw.clicked(mouse_x, mouse_y):
                 self.selected_tower = tw

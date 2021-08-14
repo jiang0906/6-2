@@ -37,7 +37,7 @@ class StartMenu:
         run = True
         clock = pygame.time.Clock()
         pygame.display.set_caption("成大安全 學校有錢")
-        #self.play_music()
+        # self.play_music()
         pygame.mixer.music.load("./sound/sound_start.wav")
         pygame.mixer.music.set_volume(0.2)
         pygame.mixer.music.play(-1)
@@ -53,16 +53,16 @@ class StartMenu:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     # check if hit start btn
                     if self.start_btn.clicked(x, y):
-                        story = Story()
-                        story.run()
+                        '''story = Story()
+                        story.run()'''
                         # pygame.mixer.music.stop() 移到story裡面 不然會有初始化的問題
-                        self.sound.play()
+                        '''self.sound.play()'''
                         game = Game()
                         game.run()
                         run = False
                     """(Q1.1) music on/off according to the button"""
                     # (hint) pygame.mixer.music.pause/unpause
-                    #如果有點擊則撥放聲音
+                    # 如果有點擊則撥放聲音
                     if self.sound_btn.clicked(x, y):
                         pygame.mixer.music.unpause()
                     if self.mute_btn.clicked(x, y):
@@ -71,7 +71,7 @@ class StartMenu:
             """(Q1.2) create button frame and draw"""
             # while cursor is moving (not click)
             # (hint) use a for loop to go through all the buttons, create the frame, and draw it.
-            #看使用者將滑鼠移至目標上,則顯示白色框框
+            # 看使用者將滑鼠移至目標上,則顯示白色框框
             for btn in self.buttons:
                 btn.create_frame(x, y)
                 btn.draw_frame(self.menu_win)

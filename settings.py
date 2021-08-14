@@ -7,6 +7,7 @@ WIN_HEIGHT = 600
 
 # image
 BACKGROUND_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "NCKU.png")), (WIN_WIDTH, WIN_HEIGHT))
+STOP_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "stop.png")), (30, 30))
 POPULARITY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "popularity.png")), (210, 140))
 CALENDER_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "calendar.png")), (30, 30))
 # story

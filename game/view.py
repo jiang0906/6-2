@@ -19,6 +19,13 @@ class GameView:
     def draw_bg(self):
         self.win.blit(BACKGROUND_IMAGE, (0, 0))
 
+    def draw_stop(self, stop_button):
+        self.win.blit(stop_button.image, stop_button.rect)
+        x, y = pygame.mouse.get_pos()
+        stop_button.create_frame(x, y)
+        if stop_button.frame is not None:
+            pygame.draw.rect(self.win, BLACK, stop_button.frame, 7)
+
     def draw_enemies(self, enemies: EnemyGroup):
         for en in enemies.get():
             self.win.blit(en.image, en.rect)
