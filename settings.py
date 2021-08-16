@@ -11,13 +11,20 @@ STOP_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "st
 POPULARITY_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "popularity.png")), (210, 140))
 CALENDER_IMAGE = pygame.transform.scale(pygame.image.load(os.path.join("images", "calendar.png")), (30, 30))
 # story
+DIALOGUE_IMAGE = []
+for i in range(4):
+    DIALOGUE_IMAGE.append(pygame.transform.scale(pygame.image.load(f"images/story{i+1}.png"), (600, 158)))
+ALARM_IMAGE = []
+for i in range(3):
+    ALARM_IMAGE.append(pygame.transform.scale(pygame.image.load(f"images/story{i+5}.jpg"), (WIN_WIDTH, WIN_HEIGHT)))
+'''
 story_1 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story1.jpg")), (WIN_WIDTH, WIN_HEIGHT))
 story_2 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story2.jpg")), (WIN_WIDTH, WIN_HEIGHT))
 story_3 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story3.jpg")), (WIN_WIDTH, WIN_HEIGHT))
 story_4 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story4.jpg")), (WIN_WIDTH, WIN_HEIGHT))
 story_5 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story5.jpg")), (WIN_WIDTH, WIN_HEIGHT))
 story_6 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story6.jpg")), (WIN_WIDTH, WIN_HEIGHT))
-story_7 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story7.jpg")), (WIN_WIDTH, WIN_HEIGHT))
+story_7 = pygame.transform.scale(pygame.image.load(os.path.join("images", "story7.jpg")), (WIN_WIDTH, WIN_HEIGHT))'''
 skip_btn = pygame.transform.scale(pygame.image.load(os.path.join("images", "skip_btn.png")), (100, 50))
 
 Thumbnail_WIDTH = 204

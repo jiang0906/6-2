@@ -1,12 +1,18 @@
 import pygame
 from settings import *
 
+
 class Story:
-    def __init__(self):
-        self.story_win = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-        self.stories = [story_1, story_2, story_3, story_4, story_5, story_6, story_7]
-        self.story_btn = Clicked(0, 0, WIN_WIDTH, WIN_HEIGHT)
-        self.skip_btn = Clicked(900, 0, 100, 50)
+    def __init__(self, story_win):
+        self.win = story_win
+        '''self.stories = [story_1, story_2, story_3, story_4, story_5, story_6, story_7]'''
+        self.__stories = []
+        for i in range(4):
+            self.__stories.append(Picture(500, 500, DIALOGUE_IMAGE[i]))
+        for i in range(3):
+            self.__stories.append(Picture(WIN_WIDTH/2, WIN_HEIGHT/2, ALARM_IMAGE[i]))
+        self.skip_btn = Picture(980, 580, skip_btn)
+        self.quit = False
 
     def run(self):
         run = True
@@ -15,32 +21,45 @@ class Story:
         while run:
             clock.tick(FPS)
             x, y = pygame.mouse.get_pos()
-            self.story_win.blit(skip_btn, (900, 0))
+            self.skip_btn.draw(self.win)
+            self.__stories[n].draw(self.win)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
+                    self.quit = True
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if self.story_btn.is_clicked(x, y) and n < 7:
-                        self.story_win.blit(self.stories[n], (0, 0))
+                    if self.skip_btn.clicked(x, y) or n == 6:
+                        if n < 4:
+                            pygame.mixer.music.load("./sound/sound_in_game.wav")
+                            pygame.mixer.music.set_volume(0.2)
+                            pygame.mixer.music.play(-1)
+                        run = False
+                    if self.__stories[n].clicked(x, y) and n < 6:
                         n += 1
                         run = True
-                    else:
-                        run = False
-                    if self.skip_btn.is_clicked(x, y):
-                        run = False
+                    if n == 4:
+                        pygame.mixer.music.load("./sound/sound_in_game.wav")
+                        pygame.mixer.music.set_volume(0.2)
+                        pygame.mixer.music.play(-1)
+
             pygame.display.update()
-        pygame.mixer.music.stop()
+
+        '''pygame.mixer.music.stop()'''
 
 
-class Clicked:
-    def __init__(self, x, y, width, height):
-        self.rect = pygame.Rect(x, y, width, height)
-        self.frame = None
+class Picture:
+    def __init__(self, x: int, y: int, image):
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.center = (x, y)
 
-    def is_clicked(self, x: int, y: int) -> bool:
-        if self.rect.collidepoint(x, y):
-            return True
-        return False
+    def clicked(self, x: int, y: int) -> bool:
+        return True if self.rect.collidepoint(x, y) else False
+
+    def draw(self, win):
+        win.blit(self.image, self.rect)
+
+
 
 
 
