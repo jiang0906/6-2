@@ -11,7 +11,12 @@ class Stop:
         self.frame = None
 
     def is_stopped(self):
-        return True if self.is_stop else False
+        if self.is_stop:
+            pygame.mixer.music.pause()
+            return True
+        else:
+            pygame.mixer.music.unpause()
+            return False
 
     def clicked(self, x: int, y: int) -> bool:
         return True if self.rect.collidepoint(x, y) else False
