@@ -2,6 +2,7 @@ from __future__ import annotations
 import pygame
 import time
 from tower.tower_factory import Tower, Vacancy
+from select_level import SelectLevel
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from game.model import GameModel
@@ -33,11 +34,18 @@ class EnemyGenerator:
 
     def update(self, user_request: str, model: GameModel):
         """add new enemy"""
-        # 敵人會在開始遊戲後3秒出現，場上空的時候才會生成下一波病毒
-        if time.time() - model.timer >= 3 and model.enemies.is_empty():
-            model.enemies.add(10)
-            model.wave += 1
-            model.timer = time.time()
+        if "easy" in model.level.button:
+            # 敵人會在選擇簡單後3秒出現，場上空的時候才會生成下一波病毒
+            if time.time() - model.timer >= 3 and model.enemies.is_empty():
+                model.enemies.add(10)
+                model.wave += 1
+                model.timer = time.time()
+        if "hard" in model.level.button:
+            # 敵人會在選擇困難後3秒出現，場上的病毒會一直隨機從各路線出來
+            if time.time() - model.timer >= 3:
+                model.enemies.add(10)
+                model.wave += 1
+                model.timer = time.time
 
 
 class TowerSeller:

@@ -5,8 +5,9 @@ import time
 from tower.tower_factory import Tower, Vacancy
 from enemy.enemy import EnemyGroup
 from menu.menus import UpgradeMenu, BuildMenu, MainMenu
-from game.user_request import RequestSubject, TowerFactory, TowerSeller, TowerDeveloper, EnemyGenerator, Muse, Music
+from game.user_request import RequestSubject, EnemyGenerator, TowerFactory, TowerSeller, TowerDeveloper, Muse, Music
 from game.stop import *
+from select_level import SelectLevel
 from settings import WIN_WIDTH, WIN_HEIGHT, BACKGROUND_IMAGE, STOP_IMAGE
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
@@ -18,6 +19,7 @@ class GameModel:
         # data
         self.bg_image = BACKGROUND_IMAGE
         self.stop_button = Stop(1000, 575)
+        self.level = SelectLevel()
         self.__towers = []
         self.__enemies = EnemyGroup()
         self.__menu = None
@@ -110,6 +112,7 @@ class GameModel:
         for btn in self.__main_menu.buttons:
             if btn.clicked(mouse_x, mouse_y):
                 self.selected_button = btn
+
 
     def call_menu(self):
         if self.selected_tower is not None:
