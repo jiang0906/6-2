@@ -32,10 +32,9 @@ class Game:
                 if story.quit is True:
                     break
             if select_level is False:
-                select = SelectLevel()
-                select.run()
+                game_model.level.run()
                 select_level = True
-                if select.quit is True:
+                if game_model.level.quit is True:
                     break
 
             quit_game = game_control.quit_game
