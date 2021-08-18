@@ -45,7 +45,7 @@ class EnemyGenerator:
             if time.time() - model.timer >= 3:
                 model.enemies.add(10)
                 model.wave += 1
-                model.timer = time.time
+                model.timer = time.time()
 
 
 class TowerSeller:
